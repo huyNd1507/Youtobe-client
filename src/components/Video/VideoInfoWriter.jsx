@@ -91,19 +91,21 @@ const VideoInfoWriter = ({ likeCount, disLikeCount, video }) => {
             <span>{disLikeCount}</span>
           </button>
         </div>
-        <button
-          disabled={loading}
-          className={`${loading ? "cursor-not-allowed" : "cursor-pointer"}`}
-          onClick={handleAddVideoFavourite}
-        >
-          <i
-            className={`${
-              videos.some((data) => data._id === video?._id)
-                ? "bx bx-list-check"
-                : "bx bx-list-plus"
-            } box-icon`}
-          ></i>
-        </button>
+        <div className="video-like">
+          <button
+            disabled={loading}
+            className={`${loading ? "cursor-not-allowed" : "cursor-pointer"}`}
+            onClick={handleAddVideoFavourite}
+          >
+            <i
+              className={`${
+                videos.some((data) => data._id === video?._id)
+                  ? "bx bx-list-check"
+                  : "bx bx-list-plus"
+              } box-icon`}
+            ></i>
+          </button>
+        </div>
       </div>
       {showModal && <WantLogin setShow={setShowModal} />}
     </>

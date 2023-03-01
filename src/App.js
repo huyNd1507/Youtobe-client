@@ -37,7 +37,7 @@ function App() {
   if (typeof currentUser === "undefined") return <Loading />;
 
   return (
-    <div>
+    <div className="container">
       <Routes>
         <Route path="/*" element={<Client />} />
         <Route path="/register" element={<Register />} />

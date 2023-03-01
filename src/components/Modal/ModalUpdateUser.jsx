@@ -117,7 +117,7 @@ const ModalUpdateUser = ({ setShow }) => {
         <div className="modal-box">
           <form onSubmit={handleUpdated} onClick={(e) => e.stopPropagation()}>
             <div>
-              <img alt="" src={previewAvatar} style={{ width: "40%" }} />
+              <img alt="" src={previewAvatar} />
               <input
                 type="file"
                 id="file-avatar"
