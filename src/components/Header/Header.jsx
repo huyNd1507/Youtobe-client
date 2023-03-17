@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./Header.scss";
 
 const Header = ({ setShow, show }) => {
   const { currentUser } = useSelector((state) => state.auth);
+  const [text, setText] = useState("");
   const [showNavbar, setShowNavbar] = useState(false);
+
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setShow(!show);
@@ -14,6 +17,16 @@ const Header = ({ setShow, show }) => {
 
   const showNavbarUser = () => {
     setShowNavbar(!showNavbar);
+  };
+
+  const handleSearchChange = (e) => {
+    setText(e.target.value);
+  };
+
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    if (!text.trim()) return;
+    navigate(`/search?type=video&q=${text}`);
   };
 
   return (
@@ -29,8 +42,13 @@ const Header = ({ setShow, show }) => {
       </div>
 
       <div className="search center">
-        <form action="">
-          <input type="text" placeholder="Search" />
+        <form onSubmit={handelSubmit}>
+          <input
+            value={text}
+            type="text"
+            placeholder="Search"
+            onChange={handleSearchChange}
+          />
           <button>
             <i className="bx bx-search box-icon"></i>
           </button>
