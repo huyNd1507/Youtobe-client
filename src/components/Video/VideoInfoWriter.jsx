@@ -14,7 +14,7 @@ import {
   disLikeVideo,
   unDisLikeVideo,
 } from "../../redux/slice/videoSlice";
-import WantLogin from "../Modal/ModalAuth";
+import ModalAuth from "../Modal/ModalAuth";
 import Notfound from "../../pages/Notfound/Notfound";
 
 const VideoInfoWriter = ({ likeCount, disLikeCount, video }) => {
@@ -107,7 +107,7 @@ const VideoInfoWriter = ({ likeCount, disLikeCount, video }) => {
           </button>
         </div>
       </div>
-      {showModal && <WantLogin setShow={setShowModal} />}
+      {showModal && <ModalAuth setShow={setShowModal} />}
     </>
   );
 };

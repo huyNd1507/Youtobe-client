@@ -14,12 +14,12 @@ import ModalAuth from "../Modal/ModalAuth";
 
 const VideoInfo = ({ video }) => {
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
 
   const { subsrciptCount, isSubsrciption, error, isCheck } = useSelector(
     (state) => state.sub
   );
   const { currentUser } = useSelector((state) => state.auth);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     if (!video?.writer?._id) return;
@@ -38,6 +38,7 @@ const VideoInfo = ({ video }) => {
 
   const handleSubsrciption = () => {
     if (!currentUser) return setShow(true);
+    console.log(currentUser);
     if (isSubsrciption) {
       if (window.confirm("Bạn muốn hủy đăng ký!")) {
         dispatch(unSubsrciption(video?.writer?._id));

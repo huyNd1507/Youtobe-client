@@ -33,8 +33,26 @@ button {
   align-items: center;
 }
 
-::-webkit-scrollbar {
+.content::-webkit-scrollbar {
   display: none;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+.videos::-webkit-scrollbar-track {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+  height: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .d-flex {
@@ -127,11 +145,9 @@ main {
 
 @keyframes showModal {
   from {
-    top: -200px;
     opacity: 0;
   }
   to {
-    top: 0;
     opacity: 1;
   }
 }
