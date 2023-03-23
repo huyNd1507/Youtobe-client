@@ -10,15 +10,13 @@ import Loading from "../Loading/Loading";
 const ModalUpdateUser = ({ setShow }) => {
   const { profile } = useSelector((state) => state.channel);
   const [previewAvatar, setPreviewAvatar] = useState(profile?.avatar);
-  const [previewBackground, setPreviewBackground] = useState(
-    profile?.background
-  );
+
   const [data, setData] = useState({
     name: profile.name,
     description: profile.description,
   });
   const [avatar, setAvatar] = useState();
-  const [bg, setBg] = useState();
+
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
@@ -41,17 +39,10 @@ const ModalUpdateUser = ({ setShow }) => {
     };
   }, [previewAvatar]);
 
-  useEffect(() => {
-    return () => {
-      previewBackground && URL.revokeObjectURL(previewBackground);
-    };
-  }, [previewBackground]);
-
   const handleUpdated = async (e) => {
     e.preventDefault();
     if (
       previewAvatar === profile.avatar &&
-      previewBackground === profile.background &&
       data.name === profile.name &&
       data.description === profile.description
     )
@@ -71,11 +62,11 @@ const ModalUpdateUser = ({ setShow }) => {
 
     setLoading(true);
 
-    if (!avatar && !bg) {
+    if (!avatar) {
       dispatch(updatedUser(data));
     }
 
-    if (avatar && !bg) {
+    if (avatar) {
       const url = await uploadImg(avatar);
       dispatch(
         updatedUser({
@@ -85,23 +76,12 @@ const ModalUpdateUser = ({ setShow }) => {
       );
     }
 
-    if (bg && !avatar) {
-      const url = await uploadImg(bg);
-      dispatch(
-        updatedUser({
-          ...data,
-          background: url,
-        })
-      );
-    }
-
-    if (bg && avatar) {
-      const files = [bg, avatar];
+    if (avatar) {
+      const files = [avatar];
       const url = await Promise.all(files.map(async (p) => await uploadImg(p)));
       dispatch(
         updatedUser({
           ...data,
-          background: url[0],
           avatar: url[1],
         })
       );
