@@ -8,9 +8,9 @@ import { calculateCreatedTime } from "../../utils/formatDate";
 import ModalEditVideo from "../Modal/ModalEditVideo";
 
 const VideoItem = ({ data, edit }) => {
+  const [show, setShow] = useState(false);
   const dispatch = useDispatch();
 
-  const [show, setShow] = useState(false);
   const handleDeleteVideo = () => {
     if (window.confirm("Bạn chắc chắn muốn xóa video này")) {
       dispatch(deleteVideo(data?._id));

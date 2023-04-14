@@ -8,8 +8,9 @@ import { postCommentApi } from "../../api/commentApi";
 const InputComment = ({ addComment }) => {
   const { currentUser } = useSelector((state) => state.auth);
   const [text, setText] = useState("");
-  const location = useLocation();
   const [loading, setLoading] = useState(false);
+
+  const location = useLocation();
   const { id } = useParams();
 
   const handlePostComment = async (e, newComment) => {

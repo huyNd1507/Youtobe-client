@@ -28,6 +28,7 @@ const VideoDetails = () => {
     (state) => state.video
   );
   const { currentUser } = useSelector((state) => state.auth);
+
   const [commentList, setCommentList] = useState([]);
   const [showAllDesc, setShowAllDesc] = useState(false);
 

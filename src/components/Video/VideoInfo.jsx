@@ -38,7 +38,7 @@ const VideoInfo = ({ video }) => {
 
   const handleSubsrciption = () => {
     if (!currentUser) return setShow(true);
-    console.log(currentUser);
+    // console.log(currentUser);
     if (isSubsrciption) {
       if (window.confirm("Bạn muốn hủy đăng ký!")) {
         dispatch(unSubsrciption(video?.writer?._id));
