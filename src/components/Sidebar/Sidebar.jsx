@@ -71,28 +71,30 @@ const Sidebar = ({ show, setShow }) => {
 
         <hr />
         {currentUser && (
-          <div
-            className="nav-link "
-            onClick={() => {
-              dispatch(logOut());
-            }}
-          >
-            <i className="bx bx-log-out box-icon"></i>
-            <span>Đăng xuất</span>
-          </div>
-        )}
-        {subChannel.length > 0 && (
-          <div className="channel-sub">
-            <h1>Kênh đăng ký</h1>
-            {subChannel.map((data) => (
-              <Link to={`/channel/${data?.channelId?._id}`} key={data._id}>
-                <div className="channel-sub-user">
-                  <img src={data?.channelId?.avatar} alt="" />
-                  <span>{data?.channelId?.name}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <>
+            <div
+              className="nav-link "
+              onClick={() => {
+                dispatch(logOut());
+              }}
+            >
+              <i className="bx bx-log-out box-icon"></i>
+              <span>Đăng xuất</span>
+            </div>
+            {subChannel.length > 0 && (
+              <div className="channel-sub">
+                <h1>Kênh đăng ký</h1>
+                {subChannel.map((data) => (
+                  <Link to={`/channel/${data?.channelId?._id}`} key={data._id}>
+                    <div className="channel-sub-user">
+                      <img src={data?.channelId?.avatar} alt="" />
+                      <span>{data?.channelId?.name}</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

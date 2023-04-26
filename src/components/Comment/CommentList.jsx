@@ -48,7 +48,7 @@ const CommentList = ({ deleteComment, commentList }) => {
           </div>
         ))
       ) : (
-        <p>Không có comment nào</p>
+        <p>Hiện tại không có bình luận nào</p>
       )}
     </div>
   );

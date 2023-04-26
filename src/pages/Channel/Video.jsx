@@ -7,12 +7,12 @@ import { clearVideo, getChannelVideo } from "../../redux/slice/channelSlice";
 import VideoItem from "../../components/Video/VideoItem";
 
 const Video = () => {
+  const [page, setPage] = useState(1);
+  const [loadMore, setLoadMore] = useState(false);
   const { videos, totalPage } = useSelector((state) => state.channel);
   const { currentUser } = useSelector((state) => state.auth);
-  const [loadMore, setLoadMore] = useState(false);
-  const [page, setPage] = useState(1);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const { id } = useParams();
 
   useEffect(() => {
