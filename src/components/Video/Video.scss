@@ -79,6 +79,9 @@
 @media (max-width: 768px) {
   .videos {
     grid-template-columns: 1fr;
+    .video {
+      margin-bottom: 10px;
+    }
   }
 
   .video-content {

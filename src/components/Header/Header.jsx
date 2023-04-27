@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "../../image/web.png";
 
 import "./Header.scss";
 
@@ -34,10 +35,7 @@ const Header = ({ setShow, show }) => {
       <div className="logo left">
         <i className="bx bx-menu box-icon" onClick={toggleMenu}></i>
         <Link to="/">
-          <img
-            src="https://www.freecodecamp.org/news/content/images/2022/01/yt-logo.png"
-            alt=""
-          />
+          <img src={logo} alt="" />
         </Link>
       </div>
 

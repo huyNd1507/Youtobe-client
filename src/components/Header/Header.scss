@@ -4,6 +4,7 @@
   align-items: center;
   height: 60px;
   padding: 15px;
+  background-color: #e9e9eb;
 }
 
 .left {
@@ -16,22 +17,30 @@
   cursor: pointer;
 }
 
+.logo {
+  img {
+    margin-top: 3px;
+    width: 70px;
+    height: 70px;
+  }
+}
+
 .search {
   display: flex;
+  border-radius: 50px;
+  overflow: hidden;
 }
 
 .search form {
   display: flex;
-  border: 1px solid #ddd;
   height: 45px;
 }
 
 .search input {
   width: 600px;
   padding: 10px;
-  border: 0;
+  border: none;
   height: 100%;
-  border-radius: 2px 0 0 2px;
 }
 
 input:focus {
