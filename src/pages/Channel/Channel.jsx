@@ -9,6 +9,7 @@ import Notfound from "../../pages/Notfound/Notfound";
 import "./Channel.scss";
 import Loading from "../../components/Loading/Loading";
 import ChannelInfo from "../../components/Channel/ChannelInfo";
+import Title from "../../components/Shared/Title";
 
 const Channel = () => {
   const { profile, loading, error } = useSelector((state) => state.channel);
@@ -24,6 +25,7 @@ const Channel = () => {
 
   return (
     <>
+      <Title title={`${profile?.name} | Youtube`} />
       <div className="channel-container">
         <ChannelInfo profile={profile} />
 

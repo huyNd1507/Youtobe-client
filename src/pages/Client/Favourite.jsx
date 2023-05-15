@@ -7,6 +7,7 @@ import Notfound from "../Notfound/Notfound";
 import VideoRecommentItem from "../../components/Video/VideoRecommentItem";
 import WantLogin from "../../components/Shared/WantLogin";
 import NoResults from "../../components/Shared/NoResults";
+import Title from "../../components/Shared/Title";
 
 const Favourite = () => {
   const { videos, error, loading } = useSelector((state) => state.favourite);
@@ -28,6 +29,7 @@ const Favourite = () => {
 
   return (
     <div>
+      <Title title={"Video yêu thích | Youtube"} />
       {videos.map((data) => {
         return <VideoRecommentItem key={data?._id} data={data} />;
       })}

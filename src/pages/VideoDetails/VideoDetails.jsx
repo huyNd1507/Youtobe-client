@@ -14,6 +14,7 @@ import {
 import { getCommentApi } from "../../api/commentApi";
 import { descViewApi } from "../../api/videoApi";
 import Notfound from "../../pages/Notfound/Notfound";
+import Title from "../../components/Shared/Title";
 import VideoInfoWriter from "../../components/Video/VideoInfoWriter";
 import VideoPlayer from "../../components/Video/VideoPlayer";
 import VideoInfo from "../../components/Video/VideoInfo";
@@ -98,6 +99,7 @@ const VideoDetails = () => {
 
   return (
     <div className="video-details">
+      <Title title={`${video?.title} | Youtube`} />
       <div>
         {video?.videoUrl && (
           <VideoPlayer videoId={video?._id} url={video?.videoUrl} />

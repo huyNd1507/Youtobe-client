@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getVideoTrendingApi } from "../../api/videoApi";
 import Loading from "../../components/Loading/Loading";
 import VideoRecommentItem from "../../components/Video/VideoRecommentItem";
+import Title from "../../components/Shared/Title";
 
 const Trending = () => {
   const [videos, setVideos] = useState([]);
@@ -25,6 +26,7 @@ const Trending = () => {
   if (loading) return <Loading />;
   return (
     <div>
+      <Title title={"Thịnh hành | Youtube"} />
       {videos.map((data) => {
         return <VideoRecommentItem key={data?._id} data={data} />;
       })}

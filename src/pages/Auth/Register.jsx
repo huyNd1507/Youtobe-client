@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 import RegisterForm from "../../components/Auth/RegisterForm";
 import "./Auth.scss";
 import { useSearchParams } from "../../hooks/useSearchParms";
+import Title from "../../components/Shared/Title";
 
 const Register = () => {
   const { currentUser } = useSelector((state) => state.auth);
@@ -14,6 +15,7 @@ const Register = () => {
 
   return (
     <div>
+      <Title title={"Đăng ký | Youtube"} />
       <RegisterForm />
     </div>
   );

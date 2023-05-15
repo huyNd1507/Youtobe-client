@@ -8,6 +8,7 @@ import "./UploadVideo.scss";
 import { cloudinaryUrl } from "../../utils/cloudinaryApi";
 import { uploadVideoApi } from "../../api/videoApi";
 import WantLogin from "../../components/Shared/WantLogin";
+import Title from "../../components/Shared/Title";
 
 const Uploadvideo = () => {
   const [file, setFile] = useState();
@@ -89,9 +90,10 @@ const Uploadvideo = () => {
     }
     setLoading(false);
   };
-  
+
   return (
     <div className="upload-video">
+      <Title title={"Upload video | youtube"} />
       {currentUser ? (
         <form onSubmit={handleSubmitForm}>
           <div className="file-video">

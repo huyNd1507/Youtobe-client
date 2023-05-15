@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 import "./Auth.scss";
 import LoginForm from "../../components/Auth/LoginForm";
 import { useSearchParams } from "../../hooks/useSearchParms";
+import Title from "../../components/Shared/Title";
 
 const Login = () => {
   const { currentUser } = useSelector((state) => state.auth);
@@ -14,6 +15,7 @@ const Login = () => {
 
   return (
     <div>
+      <Title title={"Đăng nhập | Youtube"} />
       <LoginForm />
     </div>
   );
