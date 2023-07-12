@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
+import useLocalStorage from "use-local-storage";
 
 import "./App.css";
 import Client from "./pages/Client/Client";

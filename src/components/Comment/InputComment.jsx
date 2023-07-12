@@ -56,7 +56,11 @@ const InputComment = ({ addComment }) => {
           <p>
             Cần phải
             <Link
-              className="font-bold"
+              style={{
+                paddingLeft: "5px",
+                paddingRight: "5px",
+                fontWeight: "bold",
+              }}
               to={`/login?redirect=${encodeURIComponent(location.pathname)}`}
             >
               đăng nhập

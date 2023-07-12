@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Video from "../../components/Video/Video";
@@ -15,11 +15,17 @@ import Channel from "../Channel/Channel";
 import Notfound from "../Notfound/Notfound";
 import Home from "./Home";
 
+import "../../App.css";
+
+import useLocalStorage from "use-local-storage";
+
 const Client = () => {
   const [show, setShow] = useState(false);
+  const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light");
+
   return (
-    <>
-      <Header setShow={setShow} show={show} />
+    <div data-theme={theme}>
+      <Header setShow={setShow} show={show} theme={theme} setTheme={setTheme} />
       <main>
         <Sidebar show={show} setShow={setShow} />
         <div className="content">
@@ -38,7 +44,7 @@ const Client = () => {
           </Routes>
         </div>
       </main>
-    </>
+    </div>
   );
 };
 

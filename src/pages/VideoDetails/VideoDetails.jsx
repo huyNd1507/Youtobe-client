@@ -137,7 +137,7 @@ const VideoDetails = () => {
               onClick={() => setShowAllDesc(!showAllDesc)}
               className="cursor-pointer"
             >
-              {showAllDesc ? "Ẩn bớt" : "Xem thêm"}
+              {showAllDesc ? "Ẩn bớt" : "Xem thêm..."}
             </p>
           </div>
         </div>

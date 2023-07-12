@@ -2,9 +2,8 @@
 .side-bar {
   height: 100%;
   width: 20%;
-  background-color: #e9e9eb;
   overflow-y: hidden;
-  z-index: 99;
+  z-index: 10000;
   overflow: scroll;
   box-shadow: rgba(0, 0, 0, 0.15) 1.25px 1.25px 2.6px;
 }
@@ -49,6 +48,7 @@
     }
     span {
       font-size: 15px;
+      color: #000;
     }
   }
 }
@@ -59,7 +59,6 @@
 }
 
 .nav-link:hover {
-  background: #c2c3c6;
   cursor: pointer;
 }
 
@@ -79,6 +78,7 @@ hr {
     width: 50%;
     transform: translateX(-100%);
     transition: 0.3s ease-in-out;
+    background-color: #fffffc;
   }
 
   .side-bar.actives {
@@ -111,4 +111,10 @@ hr {
   .side-bar.actives {
     transform: translateX(0);
   }
+}
+
+.fa-toggle-on {
+  display: block;
+  z-index: 100;
+  color: black;
 }

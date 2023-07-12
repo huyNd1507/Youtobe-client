@@ -7,7 +7,8 @@
   text-align: center;
 
   .box {
-    padding: 15px;
+    padding: 40px 15px;
+    height: 30%;
     background-color: #e5e7eb;
     border-radius: 5px;
     animation: showModal linear 0.2s;
@@ -20,11 +21,14 @@
     }
 
     button {
-      background-color: #c00;
+      background-color: #ff3333;
       color: #fff;
       font-size: 15px;
       padding: 10px 15px;
       border-radius: 5px;
     }
   }
+}
+
+.flex-center {
 }

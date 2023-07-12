@@ -11,6 +11,7 @@ import NoResults from "../Shared/NoResults";
 
 const Video = ({ page, setPage, GetData }) => {
   const { data, totalPage, error } = useSelector((state) => state.infinity);
+  // console.log("data: ", data);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
@@ -58,15 +59,3 @@ const Video = ({ page, setPage, GetData }) => {
 };
 
 export default Video;
-
-// {
-//   data.length > 0 ? (
-//     <div className="videos">
-//       {data.map((item, id) => (
-//         <VideoItem key={id} data={item} />
-//       ))}
-//     </div>
-//   ) : (
-//     <NoResults />
-//   );
-// }
