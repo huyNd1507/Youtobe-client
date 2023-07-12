@@ -21,6 +21,7 @@ const VideoInfoWriter = ({ likeCount, disLikeCount, video }) => {
   const { videos, loading, error } = useSelector((state) => state.favourite);
   const { isLike, isDisLike } = useSelector((state) => state.video);
   const { currentUser } = useSelector((state) => state.auth);
+  // console.log("currenUser: ", currentUser);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 

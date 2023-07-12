@@ -22,7 +22,7 @@
 
     button {
       padding: 10px 20px;
-      background: #c00;
+      background: #ff3333;
       color: #fff;
       border-radius: 10px;
     }
@@ -42,9 +42,15 @@
         cursor: pointer;
 
         &.active {
-          border-bottom: 2px solid #c00;
+          border-bottom: 2px solid #ff3333;
         }
       }
+    }
+  }
+
+  .text-center {
+    button {
+      background: transparent;
     }
   }
 }

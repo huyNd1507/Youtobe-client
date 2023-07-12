@@ -59,15 +59,3 @@ const Video = ({ page, setPage, GetData }) => {
 };
 
 export default Video;
-
-// {
-//   data.length > 0 ? (
-//     <div className="videos">
-//       {data.map((item, id) => (
-//         <VideoItem key={id} data={item} />
-//       ))}
-//     </div>
-//   ) : (
-//     <NoResults />
-//   );
-// }

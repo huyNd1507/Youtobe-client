@@ -27,13 +27,21 @@ const VideoInfo = ({ video }) => {
     dispatch(getSubsrciption(video?.writer?._id));
   }, [video?.writer?._id, dispatch]);
 
+  // useEffect(() => {
+  //   function CheckSub() {
+  //     if (currentUser || video?.writer?._id)
+  //       return dispatch(checkSubsrciption(video?.writer?._id));
+  //   }
+  //   CheckSub();
+  // }, [currentUser, video?.writer?._id, dispatch]);
+
   useEffect(() => {
-    const CheckSub = () => {
+    function setSub() {
       if (!currentUser || !video?.writer?._id)
         return dispatch(setSubsrciptions(false));
-    };
-    CheckSub();
-    dispatch(checkSubsrciption(video?.writer?._id));
+    }
+    setSub();
+    // dispatch(checkSubsrciption(video?.writer?._id));
   }, [currentUser, video?.writer?._id, dispatch]);
 
   const handleSubsrciption = () => {

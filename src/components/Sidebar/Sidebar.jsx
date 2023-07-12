@@ -52,8 +52,6 @@ const Sidebar = ({ show, setShow }) => {
           <span>Đã đăng ký</span>
         </NavLink>
 
-        {/* <hr /> */}
-
         <NavLink className="nav-link " to="favouites" onClick={toggleMenu}>
           <i className="bx bxs-movie-play box-icon"></i>
           <span>Video yêu thích</span>
@@ -69,7 +67,6 @@ const Sidebar = ({ show, setShow }) => {
           <span>Video đã thích</span>
         </NavLink>
 
-        {/* <hr /> */}
         {currentUser && (
           <>
             <div

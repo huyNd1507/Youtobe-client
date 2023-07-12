@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../image/web.png";
+import logo from "../../image/yt-logo.png";
+// import { BsToggleOn } from "react-icons/bs";
+// import { BsToggleOn } from "react-icons/bs";
 
 import "./Header.scss";
 
-const Header = ({ setShow, show }) => {
+const Header = ({ setShow, show, theme, setTheme }) => {
   const { currentUser } = useSelector((state) => state.auth);
   const [text, setText] = useState("");
   const [showNavbar, setShowNavbar] = useState(false);
+
+  const switchTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
 
   const navigate = useNavigate();
 
@@ -53,7 +60,12 @@ const Header = ({ setShow, show }) => {
         </form>
       </div>
 
-      <div className="icons right">
+      <div className="right">
+        <div className="theme-toggle" onClick={switchTheme}>
+          <i className="bx bxs-toggle-right icon-toggle"></i>
+          {/* <i class="bx bx-brightness"></i> */}
+          {/* <i class="bx bx-toggle-left icon-toggle"></i> */}
+        </div>
         {currentUser ? (
           <>
             <Link to="/upload">

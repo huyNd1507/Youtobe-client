@@ -10,8 +10,8 @@
         padding: 20px 10px;
         justify-content: center;
         align-items: center;
-        height: 100%;
         border: 1px dashed #000;
+        width: 100%;
 
         i {
           font-size: 35px;
@@ -50,11 +50,12 @@
         outline: none;
         border-radius: 10px;
         border: 1px solid #ccc;
+        background-color: #fff;
       }
 
       button {
         margin: 10px 0;
-        background-color: #c00;
+        background-color: #ff3333;
         color: #fff;
         font-size: 15px;
       }

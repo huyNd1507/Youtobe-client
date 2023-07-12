@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: "https://huytube.onrender.com/",
+  // baseURL: "https://h-tobe.onrender.com/",
+  baseURL: "http://localhost:8000/",
 });
 
 export default axiosClient;

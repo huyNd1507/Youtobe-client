@@ -4,7 +4,8 @@
   align-items: center;
   height: 60px;
   padding: 15px;
-  background-color: #e9e9eb;
+  // background-color: #e9e9eb;
+  border-bottom: 1px solid #ccc;
 }
 
 .left {
@@ -21,7 +22,6 @@
   img {
     margin-top: 3px;
     width: 70px;
-    height: 70px;
   }
 }
 
@@ -29,6 +29,8 @@
   display: flex;
   border-radius: 50px;
   overflow: hidden;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 }
 
 .search form {
@@ -38,7 +40,7 @@
 
 .search input {
   width: 600px;
-  padding: 10px;
+  padding: 10px 20px;
   border: none;
   height: 100%;
 }
@@ -52,10 +54,20 @@ input:focus {
   height: 100%;
   width: 60px;
   border: none;
+  background: #c2c3c6;
 }
 
 .right {
   right: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle {
+  .icon-toggle {
+    font-size: 1.8rem;
+    padding-right: 15px;
+  }
 }
 
 .user-login {
@@ -90,7 +102,7 @@ input:focus {
 
 .right .btn {
   padding: 8px 20px;
-  background: #c00;
+  background: #ff3333;
   color: #fff;
   border: none;
   outline: none;
