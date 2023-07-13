@@ -100,7 +100,7 @@ const VideoDetails = () => {
   return (
     <div className="video-details">
       <Title title={`${video?.title} | Youtube`} />
-      <div>
+      <div className="video-details-left">
         {video?.videoUrl && (
           <VideoPlayer videoId={video?._id} url={video?.videoUrl} />
         )}

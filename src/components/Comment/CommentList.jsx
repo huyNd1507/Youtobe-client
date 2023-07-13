@@ -25,7 +25,7 @@ const CommentList = ({ deleteComment, commentList }) => {
 
   return (
     <div className="comment-list">
-      <h3>Nhận xét</h3>
+      <h3>Bình luận</h3>
       {commentList.length > 0 ? (
         commentList.map((data) => (
           <div className="comment-user" key={data._id}>

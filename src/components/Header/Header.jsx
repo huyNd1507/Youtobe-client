@@ -9,6 +9,7 @@ import "./Header.scss";
 
 const Header = ({ setShow, show, theme, setTheme }) => {
   const { currentUser } = useSelector((state) => state.auth);
+  console.log("currenUser: ", currentUser);
   const [text, setText] = useState("");
   const [showNavbar, setShowNavbar] = useState(false);
 
@@ -71,10 +72,13 @@ const Header = ({ setShow, show, theme, setTheme }) => {
             <Link to="/upload">
               <i className="bx bx-cloud-upload  box-icon"></i>
             </Link>
-            <i
+            <div className="User-avatar" onClick={showNavbarUser}>
+              <img src={currentUser.avatar} alt={currentUser.name} />
+            </div>
+            {/* <i
               className="bx bxs-user-circle box-icon"
               onClick={showNavbarUser}
-            ></i>
+            ></i> */}
             <div
               className={showNavbar ? "user-login toogle" : "user-login"}
               onClick={showNavbarUser}

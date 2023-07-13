@@ -7,6 +7,16 @@
   // background-color: #e9e9eb;
   border-bottom: 1px solid #ccc;
 }
+.User-avatar {
+  padding: 0 7px;
+  img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #ccc;
+  }
+}
 
 .left {
   display: flex;
@@ -35,11 +45,11 @@
 
 .search form {
   display: flex;
-  height: 45px;
+  height: 35px;
 }
 
 .search input {
-  width: 600px;
+  width: 500px;
   padding: 10px 20px;
   border: none;
   height: 100%;
@@ -75,7 +85,7 @@ input:focus {
   background-color: #fff;
   color: #000;
   right: 22px;
-  top: 40px;
+  top: 50px;
   transform: translateX(calc(100% + 50px));
   transition: 0.3s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

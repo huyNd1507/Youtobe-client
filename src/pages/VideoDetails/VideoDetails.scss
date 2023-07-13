@@ -137,6 +137,7 @@
 
   .comment-list {
     margin-top: 20px;
+    margin-bottom: 50px;
 
     h3 {
       margin-bottom: 15px;
@@ -170,6 +171,9 @@
   }
 }
 
+.video-recomment {
+  margin-bottom: 50px;
+}
 .video-recomment-item {
   display: grid;
   grid-template-columns: 200px 200px;

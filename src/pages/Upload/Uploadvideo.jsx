@@ -61,7 +61,7 @@ const Uploadvideo = () => {
       formData.append("file", file);
       formData.append("upload_preset", process.env.REACT_APP_UPLOAD_KEY);
 
-      const toastId = toast.loading("Upload...", { position: "top-right" });
+      const toastId = toast.loading("Upload...", { position: "bottom-right" });
 
       const res = await axios.post(cloudinaryUrl, formData, {
         onUploadProgress: (p) => {
@@ -87,6 +87,8 @@ const Uploadvideo = () => {
     } catch (error) {
       console.log(error);
       toast.error("upload video fail!");
+    } finally {
+      toast.dismiss();
     }
     setLoading(false);
   };

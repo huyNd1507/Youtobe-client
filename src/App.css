@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&family=Poppins:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700&display=swap");
-
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&family=Poppins:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap");
 [data-theme="dark"] {
   background-color: #222;
   color: #eee;
@@ -46,6 +46,10 @@ button {
 [data-theme="dark"] .video-recomment-item .video-content h1 {
   color: #eee;
 }
+[data-theme="dark"] .video-recomment-item .video-content span {
+  color: #bbb;
+}
+
 [data-theme="dark"]
   .video-details
   .video-info
@@ -59,8 +63,8 @@ button {
   color: #eee;
 }
 
-[data-theme="dark"] .video .details .title span {
-  color: #eee;
+[data-theme="dark"] .videos .video .details .title span {
+  color: #bbb;
 }
 
 [data-theme="dark"]
@@ -83,6 +87,7 @@ textarea .upload-video form .content textarea,
 
 [data-theme="dark"] .upload-video form .content textarea {
   background-color: #1e2121;
+  color: #eee;
 }
 [data-theme="dark"] .upload-video form .content input {
   background-color: #1e2121;
@@ -129,7 +134,8 @@ textarea .upload-video form .content textarea,
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 body {
@@ -225,6 +231,7 @@ i {
   -webkit-box-orient: vertical;
   overflow: hidden;
   width: 100%;
+  font-weight: 500;
 }
 
 .line-clamp-50 {
@@ -261,10 +268,13 @@ main {
 .content {
   width: 100%;
   height: 100%;
-  /* padding: 15px 20px; */
   margin-top: 15px;
-  padding-left: 25px;
+  /* padding-left: 25px; */
   overflow-y: scroll;
+}
+
+.video {
+  padding: 0px 20px;
 }
 
 @keyframes showModal {
