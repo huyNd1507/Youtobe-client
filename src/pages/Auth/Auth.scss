@@ -13,7 +13,22 @@
 
 .form-group {
   width: 100%;
+<<<<<<< HEAD
   margin-bottom: 15px;
+=======
+  margin-bottom: 5px;
+  position: relative;
+
+  .toggle-password {
+    position: absolute;
+    padding: 0 10px;
+    right: 0;
+    top: 50%;
+    // bottom: 50%;
+    // transform: translateX(50%);
+    // transform: translateY(50%);
+  }
+>>>>>>> b64be17e8a3ef556d78b1b3ce4e33526fdc121e3
 }
 
 .form label {
@@ -33,7 +48,11 @@
 
 .text-err {
   font-size: 13px;
+<<<<<<< HEAD
   margin-top: 8px;
+=======
+  margin-bottom: 15px;
+>>>>>>> b64be17e8a3ef556d78b1b3ce4e33526fdc121e3
   color: #ff3333;
 }
 
@@ -57,6 +76,10 @@
   color: #fff;
   font-size: 16px;
   border-radius: 5px;
+<<<<<<< HEAD
+=======
+  margin-top: 15px;
+>>>>>>> b64be17e8a3ef556d78b1b3ce4e33526fdc121e3
 }
 
 .back-home {

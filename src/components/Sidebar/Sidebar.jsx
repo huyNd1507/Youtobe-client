@@ -67,6 +67,29 @@ const Sidebar = ({ show, setShow }) => {
           <span>Video đã thích</span>
         </NavLink>
 
+<<<<<<< HEAD
+=======
+        {/* <NavLink className="nav-link " to="liked-video" onClick={toggleMenu}>
+          <i className="bx bxs-like box-icon"></i>
+          <span>Video đã thích</span>
+        </NavLink>
+
+        <NavLink className="nav-link " to="liked-video" onClick={toggleMenu}>
+          <i className="bx bxs-like box-icon"></i>
+          <span>Video đã thích</span>
+        </NavLink>
+
+        <NavLink className="nav-link " to="liked-video" onClick={toggleMenu}>
+          <i className="bx bxs-like box-icon"></i>
+          <span>Video đã thích</span>
+        </NavLink>
+
+        <NavLink className="nav-link " to="liked-video" onClick={toggleMenu}>
+          <i className="bx bxs-like box-icon"></i>
+          <span>Video đã thích</span>
+        </NavLink> */}
+
+>>>>>>> b64be17e8a3ef556d78b1b3ce4e33526fdc121e3
         {currentUser && (
           <>
             <div

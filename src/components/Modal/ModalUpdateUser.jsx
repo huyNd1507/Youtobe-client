@@ -95,6 +95,10 @@ const ModalUpdateUser = ({ setShow }) => {
     <>
       <Overlay setShow={setShow}>
         <div className="modal-box">
+<<<<<<< HEAD
+=======
+          <i setShow={setShow} class="bx bx-x box-icon "></i>
+>>>>>>> b64be17e8a3ef556d78b1b3ce4e33526fdc121e3
           <form onSubmit={handleUpdated} onClick={(e) => e.stopPropagation()}>
             <div>
               <img alt="" src={previewAvatar} />

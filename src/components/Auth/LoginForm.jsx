@@ -12,6 +12,10 @@ import Loading from "../Loading/Loading";
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
+<<<<<<< HEAD
+=======
+  const [showpassword, setShowpassword] = useState(false);
+>>>>>>> b64be17e8a3ef556d78b1b3ce4e33526fdc121e3
 
   const dispatch = useDispatch();
 
@@ -66,24 +70,52 @@ const LoginForm = () => {
               value={formik.values.email}
               onChange={formik.handleChange}
             />
+<<<<<<< HEAD
 
             {formik.errors.email && (
               <p className="text-err">{formik.errors.email}</p>
             )}
           </div>
+=======
+          </div>
+          {formik.errors.email && (
+            <p className="text-err">{formik.errors.email}</p>
+          )}
+>>>>>>> b64be17e8a3ef556d78b1b3ce4e33526fdc121e3
           <div className="form-group">
             <label>Password</label>
             <input
               placeholder="EX: 123456"
+<<<<<<< HEAD
               type="password"
+=======
+              type={showpassword ? "text" : "password"}
+>>>>>>> b64be17e8a3ef556d78b1b3ce4e33526fdc121e3
               name="password"
               value={formik.values.password}
               onChange={formik.handleChange}
             />
+<<<<<<< HEAD
             {formik.errors.password && (
               <p className="text-err">{formik.errors.password}</p>
             )}
           </div>
+=======
+            <div
+              className="toggle-password"
+              onClick={() => setShowpassword(!showpassword)}
+            >
+              <i
+                className={`bx ${
+                  showpassword ? "bx-show" : " bxs-hide"
+                } box-icon `}
+              ></i>
+            </div>
+          </div>
+          {formik.errors.password && (
+            <p className="text-err">{formik.errors.password}</p>
+          )}
+>>>>>>> b64be17e8a3ef556d78b1b3ce4e33526fdc121e3
 
           <button type="submit" className="btn">
             Đăng nhập
