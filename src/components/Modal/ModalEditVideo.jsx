@@ -88,10 +88,7 @@ const ModalEditVideo = ({ setShow, video }) => {
     <>
       <Overlay setShow={setShow}>
         <div className="modal-box">
-<<<<<<< HEAD
-=======
           <i setShow={setShow} class="bx bx-x box-icon "></i>
->>>>>>> b64be17e8a3ef556d78b1b3ce4e33526fdc121e3
           <form onSubmit={handleEditVideo} onClick={(e) => e.stopPropagation()}>
             <div>
               <img alt="" src={previewThumnail} style={{ width: "100%" }} />

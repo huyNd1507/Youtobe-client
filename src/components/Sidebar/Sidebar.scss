@@ -2,18 +2,11 @@
 .side-bar {
   height: 100%;
   width: 20%;
-<<<<<<< HEAD
-  overflow-y: hidden;
-  z-index: 10000;
-  overflow: scroll;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.25px 1.25px 2.6px;
-=======
   // overflow-y: hidden;
   z-index: 10000;
   overflow: scroll;
   box-shadow: rgba(0, 0, 0, 0.15) 1.25px 1.25px 2.6px;
   padding-bottom: 30px;
->>>>>>> b64be17e8a3ef556d78b1b3ce4e33526fdc121e3
 }
 
 .side-bar::-webkit-scrollbar {
@@ -53,10 +46,7 @@
       height: 30px;
       margin-right: 5px;
       border-radius: 50%;
-<<<<<<< HEAD
-=======
       object-fit: cover;
->>>>>>> b64be17e8a3ef556d78b1b3ce4e33526fdc121e3
     }
     span {
       font-size: 15px;
