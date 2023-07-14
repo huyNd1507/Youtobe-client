@@ -1,0 +1,112 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 15px;
+  background-color: #e9e9eb;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.left #menu {
+  padding: 0 7px;
+  cursor: pointer;
+}
+
+.logo {
+  img {
+    margin-top: 3px;
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.search {
+  display: flex;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.search form {
+  display: flex;
+  height: 45px;
+}
+
+.search input {
+  width: 600px;
+  padding: 10px;
+  border: none;
+  height: 100%;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #ddd;
+}
+
+.search button {
+  height: 100%;
+  width: 60px;
+  border: none;
+}
+
+.right {
+  right: 30px;
+}
+
+.user-login {
+  position: absolute;
+  background-color: #fff;
+  color: #000;
+  right: 22px;
+  top: 40px;
+  transform: translateX(calc(100% + 50px));
+  transition: 0.3s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  z-index: 101;
+  display: none;
+}
+
+.user-login.toogle {
+  transform: translateX(0);
+  display: block;
+}
+
+.user-login li {
+  list-style: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #ccc;
+}
+
+.user-login li:hover {
+  background-color: #e5e5e5e5;
+}
+
+.right .btn {
+  padding: 8px 20px;
+  background: #c00;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 15px;
+}
+
+@media (max-width: 900px) {
+  .search input {
+    width: 25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .search {
+    display: none;
+  }
+}

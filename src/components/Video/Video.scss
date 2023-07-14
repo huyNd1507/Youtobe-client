@@ -1,0 +1,95 @@
+.videos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  .video {
+    margin-bottom: 30px;
+
+    .thumbnail {
+      width: 100%;
+      height: 200px;
+      position: relative;
+
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      .video-action {
+        background: #ff3333;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        width: 100%;
+        bottom: -10px;
+        padding: 8px 5px;
+        left: 0;
+        border-radius: 10px;
+      }
+    }
+
+    .details {
+      display: flex;
+      padding: 10px 0;
+
+      .author {
+        img {
+          object-fit: cover;
+          border-radius: 50%;
+          height: 35px;
+          width: 35px;
+          margin-right: 10px;
+        }
+      }
+
+      .title {
+        display: flex;
+        flex-direction: column;
+        h3 {
+          line-height: 18px;
+          font-size: 13px;
+          margin-bottom: 6px;
+          // color: #111;
+        }
+
+        a,
+        span {
+          text-decoration: none;
+          color: rgb(97, 95, 95);
+          font-size: 12px;
+          line-height: 18px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .videos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .videos {
+    grid-template-columns: 1fr;
+    .video {
+      margin-bottom: 10px;
+      padding: 0;
+    }
+  }
+
+  .video-content {
+    width: 100%;
+  }
+
+  .videos .video .thumbnail {
+    height: 210px;
+
+    img {
+      height: 100%;
+    }
+  }
+}
