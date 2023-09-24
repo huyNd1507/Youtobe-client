@@ -11,8 +11,10 @@ import {
 } from "../../redux/slice/subsrciptionSlice";
 import Notfound from "../../pages/Notfound/Notfound";
 import ModalAuth from "../Modal/ModalAuth";
+import { useTranslation } from "react-i18next";
 
 const VideoInfo = ({ video }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const { subsrciptCount, isSubsrciption, error, isCheck } = useSelector(
@@ -70,12 +72,16 @@ const VideoInfo = ({ video }) => {
           <Link to={`/channel/${video?.writer?._id}`}>
             <h2> {video?.writer?.name}</h2>
           </Link>
-          <p> {subsrciptCount} người đăng ký</p>
+          <p>
+            {subsrciptCount} {t("homepage.subscribers")}
+          </p>
         </div>
 
         {currentUser?._id !== video?.writer?._id && (
           <button onClick={handleSubsrciption} disabled={isCheck}>
-            {isSubsrciption ? "Đã đăng ký" : "Đăng ký"}
+            {isSubsrciption
+              ? t("homepage.registered")
+              : t("homepage.subscribe")}
           </button>
         )}
       </div>

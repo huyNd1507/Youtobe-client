@@ -7,6 +7,7 @@
   .video-player {
     width: 100%;
     height: 380px;
+    background: #000;
     video {
       width: 100%;
       height: 100%;
@@ -19,7 +20,7 @@
       font-size: 20px;
       margin: 5px 0;
       line-height: 27px;
-      font-weight: 400;
+      font-weight: 500;
     }
 
     .video-box {
@@ -180,13 +181,14 @@
   margin-bottom: 50px;
 }
 .video-recomment-item {
-  display: grid;
-  grid-template-columns: 200px 200px;
+  // display: grid;
+  // grid-template-columns: 200px 200px;
+  display: flex;
   margin-bottom: 20px;
 
   .video-avatar {
     img {
-      width: 100%;
+      width: 200px;
       height: 110px;
       border-radius: 10px;
       object-fit: cover;
@@ -201,6 +203,7 @@
       line-height: 20px;
       font-size: 13px;
       margin-bottom: 6px;
+      font-weight: 500;
     }
 
     span {
@@ -258,5 +261,14 @@
     display: grid;
     grid-template-columns: 50% 50%;
     margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .video-details {
+    grid-template-columns: 70% 30%;
+  }
+  .video-details .video-player {
+    height: 500px;
   }
 }

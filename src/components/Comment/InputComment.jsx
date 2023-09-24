@@ -2,13 +2,24 @@ import React, { useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
 
 import { postCommentApi } from "../../api/commentApi";
+import { useTranslation } from "react-i18next";
 
 const InputComment = ({ addComment }) => {
+  const { t } = useTranslation();
   const { currentUser } = useSelector((state) => state.auth);
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+
+  const handleEmojiClick = (emojiData) => {
+    setText(
+      (inputValue) =>
+        inputValue + (emojiData.isCustom ? emojiData.unified : emojiData.emoji)
+    );
+  };
 
   const location = useLocation();
   const { id } = useParams();
@@ -28,6 +39,7 @@ const InputComment = ({ addComment }) => {
       toast.error("Thêm comment thất bại!");
     }
     setLoading(false);
+    setShowEmojiPicker(false);
   };
 
   return (
@@ -46,11 +58,21 @@ const InputComment = ({ addComment }) => {
           <>
             <img src={currentUser?.avatar} alt="" />
             <input
-              placeholder="Viết bình luận"
+              placeholder={t("homepage.write a comment")}
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
-            <button disabled={loading}> {loading ? "Đang gửi" : "Gửi"}</button>
+
+            <button
+              type="button"
+              onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+            >
+              <i style={{ color: "#000" }} class="bx bx-smile box-icon"></i>
+            </button>
+            {/* {selectedEmoji ? <Emoji unified={selectedEmoji} size={30} /> : null} */}
+            <button style={{ color: "#000" }} disabled={loading}>
+              {loading ? "Đang gửi" : "Gửi"}
+            </button>
           </>
         ) : (
           <p>
@@ -63,12 +85,19 @@ const InputComment = ({ addComment }) => {
               }}
               to={`/login?redirect=${encodeURIComponent(location.pathname)}`}
             >
-              đăng nhập
+              {t("homepage.login")}
             </Link>
             để comment
           </p>
         )}
       </form>
+      {showEmojiPicker && (
+        <EmojiPicker
+          onEmojiClick={handleEmojiClick}
+          autoFocusSearch={false}
+          emojiStyle={EmojiStyle.NATIVE}
+        />
+      )}
     </>
   );
 };

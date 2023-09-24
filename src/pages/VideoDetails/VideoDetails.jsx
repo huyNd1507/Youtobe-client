@@ -23,12 +23,14 @@ import CommentList from "../../components/Comment/CommentList";
 import VideoRecommentItem from "../../components/Video/VideoRecommentItem";
 import { addVideoLocal } from "../../utils/localStrorage";
 import { calculateCreatedTime } from "../../utils/formatDate";
+import { useTranslation } from "react-i18next";
 
 const VideoDetails = () => {
   const { video, videoRecomment, likeCount, disLikeCount, error } = useSelector(
     (state) => state.video
   );
   const { currentUser } = useSelector((state) => state.auth);
+  const { t } = useTranslation();
 
   const [commentList, setCommentList] = useState([]);
   const [showAllDesc, setShowAllDesc] = useState(false);
@@ -121,7 +123,9 @@ const VideoDetails = () => {
           </div>
           <div className="video-des">
             <div className=" d-flex">
-              <p className="m-right font-bold">{video?.totalView} lượt xem</p>
+              <p className="m-right font-bold">
+                {video?.totalView} {t("homepage.view")}
+              </p>
               <p className="font-bold">
                 {calculateCreatedTime(video?.createdAt)}
               </p>
@@ -137,7 +141,7 @@ const VideoDetails = () => {
               onClick={() => setShowAllDesc(!showAllDesc)}
               className="cursor-pointer"
             >
-              {showAllDesc ? "Ẩn bớt" : "Xem thêm..."}
+              {showAllDesc ? t("homepage.hide less") : t("homepage.see more")}
             </p>
           </div>
         </div>

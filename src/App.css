@@ -1,9 +1,29 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&family=Poppins:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700&display=swap"); */
-/* @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"); */
-@import url("https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@200;300;400;500;600;700;800;900&family=Barlow+Condensed:wght@100&family=Oswald:wght@200;300;400;500;600;700&family=PT+Sans+Narrow&family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@100;300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  overflow: hidden;
+}
+
 [data-theme="dark"] {
   background-color: #222;
+  transition: background 0.2s linear;
   color: #eee;
+}
+
+[data-theme="light"] {
+  transition: background 0.2s linear;
+}
+
+[data-theme="light"] .upload:hover {
+  background: #eee;
 }
 
 [data-theme="dark"] a {
@@ -140,24 +160,6 @@ textarea .upload-video form .content textarea,
     background-color: #222;
   }
 }
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  /* font-family: "Roboto", sans-serif; */
-  /* font-family: "Roboto Condensed", sans-serif; */
-  font-family: "Roboto", sans-serif;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  overflow: hidden;
-}
-/* 
-img {
-  object-fit: cover;
-  border: 1px solid #333;
-} */
 
 body::-webkit-scrollbar {
   display: none;
@@ -214,6 +216,12 @@ button {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .text-center {
@@ -286,12 +294,7 @@ main {
   width: 100%;
   height: 100%;
   padding: 10px;
-  /* padding-left: 25px; */
   overflow-y: scroll;
-}
-
-.video {
-  /* padding: 0px 12px; */
 }
 
 @keyframes showModal {
@@ -323,9 +326,14 @@ main {
 @media (max-width: 480px) {
   .content {
     max-width: 100%;
-    padding: 20px 10px;
+    padding: 10px 10px;
     margin-bottom: 30px;
   }
+
+  .infinite-scroll-component::-webkit-scrollbar {
+    width: 0px;
+  }
+
   .video-box {
     display: flex;
     flex-direction: column;

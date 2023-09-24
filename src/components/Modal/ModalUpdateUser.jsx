@@ -95,7 +95,7 @@ const ModalUpdateUser = ({ setShow }) => {
     <>
       <Overlay setShow={setShow}>
         <div className="modal-box">
-          <i setShow={setShow} class="bx bx-x box-icon "></i>
+          <i setShow={setShow} class="bx bx-x box-icon close-icon "></i>
           <form onSubmit={handleUpdated} onClick={(e) => e.stopPropagation()}>
             <div>
               <img alt="" src={previewAvatar} />
@@ -108,7 +108,7 @@ const ModalUpdateUser = ({ setShow }) => {
             </div>
             <div className="content">
               <div>
-                <label>Tiêu để</label>
+                <label>Tiêu để: </label>
                 <input
                   type="text"
                   placeholder="Tiêu đề..."
@@ -118,7 +118,7 @@ const ModalUpdateUser = ({ setShow }) => {
                 />
               </div>
               <div>
-                <label>Mô tả</label>
+                <label>Mô tả: </label>
                 <textarea
                   type="text"
                   placeholder="Mô tả..."

@@ -4,8 +4,10 @@ import { toast } from "react-toastify";
 import { calculateCreatedTime } from "../../utils/formatDate";
 import { useSelector } from "react-redux";
 import { deleteCommentApi } from "../../api/commentApi";
+import { useTranslation } from "react-i18next";
 
 const CommentList = ({ deleteComment, commentList }) => {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const { currentUser } = useSelector((state) => state.auth);
 
@@ -25,7 +27,7 @@ const CommentList = ({ deleteComment, commentList }) => {
 
   return (
     <div className="comment-list">
-      <h3>Bình luận</h3>
+      <h3>{t("homepage.comment")}</h3>
       {commentList.length > 0 ? (
         commentList.map((data) => (
           <div className="comment-user" key={data._id}>
@@ -48,7 +50,7 @@ const CommentList = ({ deleteComment, commentList }) => {
           </div>
         ))
       ) : (
-        <p>Hiện tại không có bình luận nào</p>
+        <p>{t("homepage.there are currently no comments")}</p>
       )}
     </div>
   );

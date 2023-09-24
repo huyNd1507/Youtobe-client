@@ -1,10 +1,10 @@
 import React from "react";
-import { CircularProgress } from "react-cssfx-loading";
+import { TwinSpin } from "react-cssfx-loading";
 
 const Loading = () => {
   return (
     <div className="loading">
-      <CircularProgress color="red" width="100px" height="100px" />
+      <TwinSpin color="red" width="100px" height="100px" />
     </div>
   );
 };

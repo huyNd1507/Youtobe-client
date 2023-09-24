@@ -1,4 +1,9 @@
 .channel-container {
+  .text-center {
+    button {
+      color: #fff;
+    }
+  }
   .channel-info {
     display: flex;
     justify-content: space-between;
@@ -31,8 +36,8 @@
 
   .channel-navbar {
     background-color: #f2f2f2;
-    border-bottom: 1px solid #ccc;
     margin-bottom: 20px;
+    padding-bottom: 10px;
     ul {
       display: inline-flex;
 
@@ -43,7 +48,9 @@
         cursor: pointer;
 
         &.active {
-          border-bottom: 2px solid #ff3333;
+          border-bottom: 4px solid #ff3333;
+          background: transparent;
+          font-weight: 500;
         }
       }
     }

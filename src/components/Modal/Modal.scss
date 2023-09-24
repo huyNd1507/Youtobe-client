@@ -19,14 +19,14 @@
     animation: showModal ease-in 0.5s;
     margin: auto;
     text-align: center;
-    padding: 15px;
+    padding: 10px;
 
     img {
       display: block;
-      width: 100%;
-      height: 190px;
+      width: 100px;
+      height: 100px;
       margin: 10px auto;
-      // border-radius: 50%;
+      border-radius: 50%;
       object-fit: cover;
     }
 
@@ -38,13 +38,23 @@
       color: #fff;
       margin: 10px 0;
     }
+
+    .close-icon {
+      font-size: 32px;
+    }
   }
 
   .content {
     padding: 10px 0px;
+    margin-bottom: 0px;
     label {
       display: block;
-      // margin: 10px 0;
+      text-align: left;
+      padding: 4px 0px;
+    }
+
+    input {
+      margin-bottom: 20px;
     }
 
     input,
@@ -53,12 +63,12 @@
       width: 100%;
       padding: 10px;
       outline: none;
-      border-radius: 10px;
+      border-radius: 3px;
       border: 1px solid #ccc;
     }
 
     button {
-      margin: 10px 0;
+      margin-top: 20px;
       background-color: #ff3333;
       color: #fff;
       font-size: 15px;
@@ -66,9 +76,21 @@
   }
 }
 
+.modal-video {
+  width: 500px;
+  img {
+    border-radius: 0px;
+    height: auto;
+  }
+}
+
 @media (max-width: 768px) {
   .modal-box {
-    width: 350px;
+    width: 95%;
     padding: 8px;
+  }
+
+  .modal-video {
+    width: 95%;
   }
 }

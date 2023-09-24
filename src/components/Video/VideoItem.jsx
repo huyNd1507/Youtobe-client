@@ -6,8 +6,10 @@ import { deleteVideo } from "../../redux/slice/channelSlice";
 
 import { calculateCreatedTime } from "../../utils/formatDate";
 import ModalEditVideo from "../Modal/ModalEditVideo";
+import { useTranslation } from "react-i18next";
 
 const VideoItem = ({ data, edit }) => {
+  const { t } = useTranslation();
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
 
@@ -58,7 +60,7 @@ const VideoItem = ({ data, edit }) => {
               </Link>
               <span>{data?.writer?.name}</span>
               <span>
-                {data?.totalView} lượt xem •{" "}
+                {data?.totalView} {t("homepage.view")} •{" "}
                 {calculateCreatedTime(data.createdAt)}
               </span>
             </div>

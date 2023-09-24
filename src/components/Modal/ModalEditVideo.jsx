@@ -87,7 +87,7 @@ const ModalEditVideo = ({ setShow, video }) => {
   return (
     <>
       <Overlay setShow={setShow}>
-        <div className="modal-box">
+        <div className="modal-box modal-video">
           <i setShow={setShow} class="bx bx-x box-icon "></i>
           <form onSubmit={handleEditVideo} onClick={(e) => e.stopPropagation()}>
             <div>
