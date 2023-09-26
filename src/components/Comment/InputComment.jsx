@@ -3,6 +3,7 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
+import { Spin } from "react-cssfx-loading";
 
 import { postCommentApi } from "../../api/commentApi";
 import { useTranslation } from "react-i18next";
@@ -61,7 +62,7 @@ const InputComment = ({ addComment }) => {
               type="button"
               onClick={() => setShowEmojiPicker(!showEmojiPicker)}
             >
-              <i style={{ color: "#000" }} className="bx bx-smile box-icon"></i>
+              <i style={{ color: "#000" }} className="bx bx-smile"></i>
             </button>
             <input
               placeholder={t("homepage.write a comment")}
@@ -69,7 +70,9 @@ const InputComment = ({ addComment }) => {
               onChange={(e) => setText(e.target.value)}
             />
 
-            <button disabled={loading}>{loading ? "Đang gửi" : "Gửi"}</button>
+            <button disabled={loading}>
+              {loading ? <Spin /> : <i class="bx bxs-send"></i>}
+            </button>
           </>
         ) : (
           <p>

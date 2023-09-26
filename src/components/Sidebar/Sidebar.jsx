@@ -37,66 +37,67 @@ const Sidebar = ({ show, setShow }) => {
   }, [currentUser]);
 
   return (
-    <div className={show ? "side-bar actives" : "side-bar "}>
-      <div className="nav">
-        <NavLink className="nav-link " to="/" onClick={toggleMenu}>
-          <i className="bx bx-home box-icon"></i>
-          <span>{t("homepage.home")}</span>
-        </NavLink>
+    <>
+      <div className={show ? "side-bar actives" : "side-bar "}>
+        <div className="nav">
+          <NavLink className="nav-link " to="/" onClick={toggleMenu}>
+            <i className="bx bx-home box-icon"></i>
+            <span>{t("homepage.home")}</span>
+          </NavLink>
 
-        <NavLink className="nav-link " to="/trending" onClick={toggleMenu}>
-          <i className="bx bxs-hot box-icon"></i>
-          <span>{t("homepage.trending")}</span>
-        </NavLink>
+          <NavLink className="nav-link " to="/trending" onClick={toggleMenu}>
+            <i className="bx bxs-hot box-icon"></i>
+            <span>{t("homepage.trending")}</span>
+          </NavLink>
 
-        <NavLink className="nav-link " to="subsrciptions" onClick={toggleMenu}>
-          <i className="bx bxs-videos box-icon"></i>
-          <span>{t("homepage.registered")}</span>
-        </NavLink>
+          <NavLink
+            className="nav-link "
+            to="subsrciptions"
+            onClick={toggleMenu}
+          >
+            <i className="bx bxs-videos box-icon"></i>
+            <span>{t("homepage.registered")}</span>
+          </NavLink>
 
-        <NavLink className="nav-link " to="favouites" onClick={toggleMenu}>
-          <i className="bx bxs-movie-play box-icon"></i>
-          <span>{t("homepage.favorite videos")}</span>
-        </NavLink>
+          <NavLink className="nav-link " to="favouites" onClick={toggleMenu}>
+            <i className="bx bxs-movie-play box-icon"></i>
+            <span>{t("homepage.favorite videos")}</span>
+          </NavLink>
 
-        <NavLink className="nav-link " to="history" onClick={toggleMenu}>
-          <i className="bx bx-history box-icon"></i>
-          <span>{t("homepage.video viewed")}</span>
-        </NavLink>
+          <NavLink className="nav-link " to="history" onClick={toggleMenu}>
+            <i className="bx bx-history box-icon"></i>
+            <span>{t("homepage.video viewed")}</span>
+          </NavLink>
 
-        <NavLink className="nav-link " to="liked-video" onClick={toggleMenu}>
-          <i className="bx bxs-like box-icon"></i>
-          <span>{t("homepage.liked video")}</span>
-        </NavLink>
+          <NavLink className="nav-link " to="liked-video" onClick={toggleMenu}>
+            <i className="bx bxs-like box-icon"></i>
+            <span>{t("homepage.liked video")}</span>
+          </NavLink>
 
-        {currentUser && (
-          <>
-            {/* <div
-              className="nav-link "
-              onClick={() => {
-                dispatch(logOut());
-              }}
-            >
-              <i className="bx bx-log-out box-icon"></i>
-              <span>{t("homepage.log out")}</span>
-            </div> */}
-            {subChannel.length > 0 && (
-              <div className="channel-sub">
-                <h1>{t("homepage.subscribed channel")}</h1>
-                {subChannel.map((data) => (
-                  <Link to={`/channel/${data?.channelId?._id}`} key={data._id}>
-                    <div className="channel-sub-user">
-                      <img src={data?.channelId?.avatar} alt="" />
-                      <span>{data?.channelId?.name}</span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </>
-        )}
+          {currentUser && (
+            <>
+              {subChannel.length > 0 && (
+                <div className="channel-sub">
+                  <h1>{t("homepage.subscribed channel")}</h1>
+                  {subChannel.map((data) => (
+                    <Link
+                      to={`/channel/${data?.channelId?._id}`}
+                      key={data._id}
+                    >
+                      <div className="channel-sub-user">
+                        <img src={data?.channelId?.avatar} alt="" />
+                        <span>{data?.channelId?.name}</span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </div>
-    </div>
+      {show && <div className="modal-sidebar" onClick={toggleMenu}></div>}
+    </>
   );
 };
 

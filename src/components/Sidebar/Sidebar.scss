@@ -90,40 +90,48 @@ hr {
   border: none;
 }
 
-@media (max-width: 900px) {
-  .side-bar {
-    position: fixed;
-    width: 50%;
-    transform: translateX(-100%);
-    transition: 0.3s ease-in-out;
-    background-color: #fffffc;
-  }
-
-  .side-bar.actives {
-    transform: translateX(0);
-  }
-}
-
-@media (max-width: 768px) {
-  .side-bar {
-    position: fixed;
-    width: 60%;
-    transform: translateX(-100%);
-    transition: 0.3s ease-in-out;
-  }
-
-  .side-bar.actives {
-    transform: translateX(0);
-  }
-}
-
-@media (min-width: 901px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .side-bar {
     position: fixed;
     width: 30%;
+    top: 0;
     transform: translateX(-100%);
     transition: 0.3s ease-in-out;
-    z-index: 99;
+    background: #fff;
+  }
+
+  .modal-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 111;
+  }
+  .side-bar.actives {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 320px) and (max-width: 650px) {
+  .side-bar {
+    position: fixed;
+    width: 30%;
+    top: 0;
+    transform: translateX(-100%);
+    transition: 0.3s ease-in-out;
+    background: #fff;
+  }
+
+  .modal-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 111;
   }
 
   .side-bar.actives {

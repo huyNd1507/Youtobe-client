@@ -12,6 +12,7 @@ import Title from "../../components/Shared/Title";
 const Favourite = () => {
   const { videos, error, loading } = useSelector((state) => state.favourite);
   const { currentUser } = useSelector((state) => state.auth);
+  console.log("curenUser Favourite: ", currentUser);
   const dispatch = useDispatch();
 
   useEffect(() => {

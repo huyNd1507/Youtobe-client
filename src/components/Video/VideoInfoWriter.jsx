@@ -135,28 +135,28 @@ const VideoInfoWriter = ({ likeCount, disLikeCount, video }) => {
                   quote={"Dummy text!"}
                   hashtag="#youtube clone"
                 >
-                  <FacebookIcon size={32} round />
+                  <FacebookIcon size={40} round />
                 </FacebookShareButton>
                 <EmailShareButton
                   url={`https://h-tobe-clone.vercel.app/details/${video?._id}`}
                   quote={"Dummy text!"}
                   hashtag="#muo"
                 >
-                  <EmailIcon size={32} round />
+                  <EmailIcon size={40} round />
                 </EmailShareButton>
                 <TelegramShareButton
                   url={`https://h-tobe-clone.vercel.app/details/${video?._id}`}
                   quote={"Dummy text!"}
                   hashtag="#muo"
                 >
-                  <TelegramIcon size={32} round />
+                  <TelegramIcon size={40} round />
                 </TelegramShareButton>
                 <TwitterShareButton
                   url={`https://h-tobe-clone.vercel.app/details/${video?._id}`}
                   quote={"Dummy text!"}
                   hashtag="#muo"
                 >
-                  <TwitterIcon size={32} round />
+                  <TwitterIcon size={40} round />
                 </TwitterShareButton>
               </div>
               <div
