@@ -57,22 +57,19 @@ const InputComment = ({ addComment }) => {
         {currentUser ? (
           <>
             <img src={currentUser?.avatar} alt="" />
+            <button
+              type="button"
+              onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+            >
+              <i style={{ color: "#000" }} className="bx bx-smile box-icon"></i>
+            </button>
             <input
               placeholder={t("homepage.write a comment")}
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
 
-            <button
-              type="button"
-              onClick={() => setShowEmojiPicker(!showEmojiPicker)}
-            >
-              <i style={{ color: "#000" }} class="bx bx-smile box-icon"></i>
-            </button>
-            {/* {selectedEmoji ? <Emoji unified={selectedEmoji} size={30} /> : null} */}
-            <button style={{ color: "#000" }} disabled={loading}>
-              {loading ? "Đang gửi" : "Gửi"}
-            </button>
+            <button disabled={loading}>{loading ? "Đang gửi" : "Gửi"}</button>
           </>
         ) : (
           <p>

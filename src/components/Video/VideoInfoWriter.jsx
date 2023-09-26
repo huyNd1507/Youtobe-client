@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import {
+  FacebookShareButton,
+  EmailShareButton,
+  FacebookIcon,
+  EmailIcon,
+  TelegramShareButton,
+  TelegramIcon,
+  TwitterShareButton,
+  TwitterIcon,
+} from "react-share";
 
 import {
   addVideoFavourite,
@@ -21,9 +31,13 @@ const VideoInfoWriter = ({ likeCount, disLikeCount, video }) => {
   const { videos, loading, error } = useSelector((state) => state.favourite);
   const { isLike, isDisLike } = useSelector((state) => state.video);
   const { currentUser } = useSelector((state) => state.auth);
-  // console.log("currenUser: ", currentUser);
+
   const [showModal, setShowModal] = useState(false);
+  const [shareBox, setShareBox] = useState(false);
   const dispatch = useDispatch();
+  const location = useLocation();
+  const currentURL = location.pathname;
+  console.log("currentURL: ", currentURL);
 
   const { id } = useParams();
 
@@ -106,6 +120,51 @@ const VideoInfoWriter = ({ likeCount, disLikeCount, video }) => {
               } box-icon`}
             ></i>
           </button>
+        </div>
+
+        <div className="video-like">
+          <button onClick={() => setShareBox(!shareBox)}>
+            <i className="bx bx-share"></i>
+          </button>
+
+          {shareBox && (
+            <>
+              <div className="share-box" onClick={() => setShareBox(!shareBox)}>
+                <FacebookShareButton
+                  url={`https://h-tobe-clone.vercel.app/details/${video?._id}`}
+                  quote={"Dummy text!"}
+                  hashtag="#youtube clone"
+                >
+                  <FacebookIcon size={32} round />
+                </FacebookShareButton>
+                <EmailShareButton
+                  url={`https://h-tobe-clone.vercel.app/details/${video?._id}`}
+                  quote={"Dummy text!"}
+                  hashtag="#muo"
+                >
+                  <EmailIcon size={32} round />
+                </EmailShareButton>
+                <TelegramShareButton
+                  url={`https://h-tobe-clone.vercel.app/details/${video?._id}`}
+                  quote={"Dummy text!"}
+                  hashtag="#muo"
+                >
+                  <TelegramIcon size={32} round />
+                </TelegramShareButton>
+                <TwitterShareButton
+                  url={`https://h-tobe-clone.vercel.app/details/${video?._id}`}
+                  quote={"Dummy text!"}
+                  hashtag="#muo"
+                >
+                  <TwitterIcon size={32} round />
+                </TwitterShareButton>
+              </div>
+              <div
+                className="modal-share"
+                onClick={() => setShareBox(!shareBox)}
+              ></div>
+            </>
+          )}
         </div>
       </div>
       {showModal && <ModalAuth setShow={setShowModal} />}

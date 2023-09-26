@@ -40,7 +40,20 @@ button {
 }
 
 [data-theme="dark"] .modal-box {
-  color: #000;
+  color: #eee;
+  background: #333;
+}
+
+[data-theme="dark"] .modal-box .content input {
+  background: #444;
+  color: #fff;
+  border: none;
+}
+
+[data-theme="dark"] .modal-box .content textarea {
+  background: #444;
+  color: #fff;
+  border: none;
 }
 
 [data-theme="dark"] .modal-box p {
@@ -155,6 +168,55 @@ textarea .upload-video form .content textarea,
 [data-theme="dark"] .video-details .video-info .video-box .video-author button {
   background-color: #111;
 }
+
+[data-theme="dark"] .upload:hover {
+  background-color: #444;
+}
+
+[data-theme="dark"] .ellipsis-menu:hover {
+  background-color: #444;
+}
+
+[data-theme="dark"] .notification:hover {
+  background-color: #444;
+}
+
+[data-theme="dark"] .user-login {
+  background-color: #000;
+  color: #fff;
+}
+
+[data-theme="dark"] .user-login ul li a {
+  color: #fff;
+}
+
+[data-theme="dark"] .user-login ul li:hover {
+  background-color: #333;
+}
+
+[data-theme="dark"] .user-info p {
+  color: #fff;
+}
+
+[data-theme="dark"] .search input {
+  background: #444;
+  border: none;
+  outline: none;
+  color: #fff;
+}
+
+[data-theme="dark"] .search button {
+  background: #555;
+}
+
+[data-theme="dark"] .comment button .bx-smile {
+  color: #bbb !important;
+}
+
+[data-theme="light"] .comment button {
+  color: #000;
+}
+
 @media (max-width: 900px) {
   [data-theme="dark"] .side-bar {
     background-color: #222;
@@ -295,6 +357,7 @@ main {
   height: 100%;
   padding: 10px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 @keyframes showModal {

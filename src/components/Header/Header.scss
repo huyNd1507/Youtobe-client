@@ -4,7 +4,6 @@
   align-items: center;
   height: 60px;
   padding: 15px;
-  // background-color: #e9e9eb;
   border-bottom: 1px solid #ccc;
 }
 .User-avatar {
@@ -30,7 +29,38 @@
   align-items: center;
 
   &:hover {
-    background: #444;
+    background: #eee;
+  }
+}
+
+.notification {
+  margin: 0 10px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background: #eee;
+  }
+}
+
+.ellipsis-menu {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background: #eee;
+  }
+
+  .bx {
+    font-size: 20px;
   }
 }
 
@@ -106,7 +136,8 @@ input:focus {
   color: #000;
   right: 22px;
   top: 50px;
-  transform: translateX(calc(100% + 50px));
+  min-width: 250px;
+
   transition: 0.3s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   z-index: 101;
@@ -114,12 +145,10 @@ input:focus {
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   border-radius: 5px;
-  display: none;
-}
 
-.user-login.toogle {
-  transform: translateX(0);
-  display: block;
+  .btn {
+    margin: 10px 0px 10px 20px;
+  }
 }
 
 .user-login li {
@@ -226,11 +255,11 @@ input:focus {
 }
 
 .dark .bx {
-  color: #f1c40f;
+  color: #e35c12;
 }
 
 .light .bx {
-  color: #f39c12;
+  color: #e35c12;
 }
 
 .dark .checkbox:checked + .checkbox-label .ball {
@@ -238,11 +267,11 @@ input:focus {
 }
 
 .dark .checkbox:checked + .checkbox-label .bx.bxs-sun {
-  color: #f1c40f;
+  color: #e35c12;
 }
 
 .dark .checkbox:checked + .checkbox-label .bx.bxs-moon {
-  color: #f39c12;
+  color: #f37112;
 }
 
 // notification
@@ -289,21 +318,39 @@ input:focus {
   .header {
     padding: 5px 10px;
     position: relative;
+    height: 50px;
   }
 
-  .search {
+  .search-destop {
     display: none;
+  }
+  .search-modal {
     position: absolute;
-    width: 95%;
-    top: 60px;
-    border-radius: 2px;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+  }
+  .search {
+    // display: none;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0px;
+    z-index: 101;
 
     form {
       width: 100%;
+      display: flex;
+      justify-content: center;
+      height: 50px;
     }
   }
   .box-icon {
-    font-size: 25px;
+    font-size: 24px;
   }
 
   .theme-toggle {
@@ -328,5 +375,17 @@ input:focus {
 
   .notification .bx-bell {
     font-size: 25px;
+  }
+
+  [data-theme="dark"] .search input {
+    background: #fff;
+    border: none;
+    outline: none;
+    color: #000;
+  }
+
+  [data-theme="dark"] .search button {
+    background: #eee;
+    color: #000;
   }
 }

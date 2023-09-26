@@ -29,6 +29,8 @@ const VideoDetails = () => {
   const { video, videoRecomment, likeCount, disLikeCount, error } = useSelector(
     (state) => state.video
   );
+
+  console.log("video: ", video);
   const { currentUser } = useSelector((state) => state.auth);
   const { t } = useTranslation();
 
