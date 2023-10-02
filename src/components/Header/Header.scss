@@ -136,7 +136,7 @@ input:focus {
   color: #000;
   right: 22px;
   top: 50px;
-  min-width: 250px;
+  min-width: 170px;
 
   transition: 0.3s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -169,6 +169,20 @@ input:focus {
     .bx-chevron-right {
       font-size: 22px;
     }
+  }
+}
+
+.box-language {
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 17px;
+    font-weight: 500;
+    width: 100%;
+    padding: 10px 20px;
+    color: #000;
+    background: #fff;
   }
 }
 

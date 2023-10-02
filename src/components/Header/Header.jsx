@@ -17,6 +17,22 @@ const Header = ({ setShow, show, theme, setTheme }) => {
   const [text, setText] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
+  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
+
+  const handleLanguageClick = () => {
+    setShowLanguageMenu(!showLanguageMenu);
+    setShowNavbar(!showNavbar);
+  };
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+    setShowLanguageMenu(false);
+  };
+
+  const handleBackButtonClick = () => {
+    setShowLanguageMenu(false);
+    setShowNavbar(true);
+  };
 
   const switchTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -29,10 +45,6 @@ const Header = ({ setShow, show, theme, setTheme }) => {
     setShow(!show);
   };
 
-  const showNavbarUser = () => {
-    setShowNavbar(!showNavbar);
-  };
-
   const handleSearchChange = (e) => {
     setText(e.target.value);
   };
@@ -43,10 +55,6 @@ const Header = ({ setShow, show, theme, setTheme }) => {
     navigate(`/search?type=video&q=${text}`);
     setSearchOpen(false);
     setText("");
-  };
-
-  const changeLanguage = (language) => {
-    i18n.changeLanguage(language);
   };
 
   return (
@@ -117,7 +125,11 @@ const Header = ({ setShow, show, theme, setTheme }) => {
         {currentUser ? (
           <div
             className="User-avatar"
-            onClick={() => setShowNavbar(!showNavbar)}
+            onClick={() => {
+              if (!showLanguageMenu) {
+                setShowNavbar(!showNavbar);
+              }
+            }}
           >
             <img src={currentUser.avatar} alt={currentUser.name} />
           </div>
@@ -129,6 +141,7 @@ const Header = ({ setShow, show, theme, setTheme }) => {
             <i className="bx bx-dots-vertical-rounded"></i>
           </div>
         )}
+
         {showNavbar && (
           <div className="user-login">
             {currentUser ? (
@@ -190,9 +203,10 @@ const Header = ({ setShow, show, theme, setTheme }) => {
                   </label>
                 </div>
               </li>
-              <li className="flex-between">
+
+              <li className="flex-between" onClick={handleLanguageClick}>
                 <span>
-                  <i className="bx bx-captions icon"></i> Ngôn ngữ
+                  <i className="bx bx-captions icon"></i> {currentLanguage}
                 </span>
                 <span>
                   <i className="bx bx-chevron-right"></i>
@@ -211,6 +225,22 @@ const Header = ({ setShow, show, theme, setTheme }) => {
                 </li>
               )}
             </ul>
+          </div>
+        )}
+
+        {!showNavbar && (
+          <div className="user-login box-language">
+            {showLanguageMenu && (
+              <div className="submenu">
+                <button className="back-button" onClick={handleBackButtonClick}>
+                  <box-icon name="arrow-back"></box-icon> Ngôn ngữ
+                </button>
+                <ul>
+                  <li onClick={() => changeLanguage("en")}>Tiếng Anh</li>
+                  <li onClick={() => changeLanguage("vi")}>Tiếng Việt</li>
+                </ul>
+              </div>
+            )}
           </div>
         )}
       </div>
