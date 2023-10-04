@@ -37,7 +37,7 @@ const VideoInfoWriter = ({ likeCount, disLikeCount, video }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const currentURL = location.pathname;
-  console.log("currentURL: ", currentURL);
+  // console.log("currentURL: ", currentURL);
 
   const { id } = useParams();
 

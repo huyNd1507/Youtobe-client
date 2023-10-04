@@ -14,6 +14,15 @@ const InputComment = ({ addComment }) => {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [isInputFocused, setIsInputFocused] = useState(false);
+
+  const handleInputFocus = () => {
+    setIsInputFocused(true);
+  };
+
+  const handleCancelClick = () => {
+    setText("");
+  };
 
   const handleEmojiClick = (emojiData) => {
     setText(
@@ -43,6 +52,17 @@ const InputComment = ({ addComment }) => {
     setShowEmojiPicker(false);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handlePostComment(e, {
+        videoId: id,
+        userId: currentUser?._id,
+        content: text,
+      });
+    }
+  };
+
   return (
     <>
       <form
@@ -56,24 +76,38 @@ const InputComment = ({ addComment }) => {
         }
       >
         {currentUser ? (
-          <>
-            <img src={currentUser?.avatar} alt="" />
-            <button
-              type="button"
-              onClick={() => setShowEmojiPicker(!showEmojiPicker)}
-            >
-              <i style={{ color: "#000" }} className="bx bx-smile"></i>
-            </button>
-            <input
-              placeholder={t("homepage.write a comment")}
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-            />
+          <div className="d-flex  w-100">
+            <div>
+              <img src={currentUser?.avatar} alt="" />
+            </div>
+            <div className="flex-1 ">
+              <input
+                placeholder={t("homepage.write a comment")}
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                onFocus={handleInputFocus}
+                onKeyDown={handleKeyDown}
+              />
 
-            <button disabled={loading}>
-              {loading ? <Spin /> : <i class="bx bxs-send"></i>}
-            </button>
-          </>
+              {isInputFocused && (
+                <div className="flex-between">
+                  <button
+                    type="button"
+                    onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+                  >
+                    <i style={{ color: "#000" }} className="bx bx-smile"></i>
+                  </button>
+
+                  <div>
+                    <button onClick={handleCancelClick}>Hủy</button>
+                    <button type="submit" disabled={loading}>
+                      {loading ? <Spin /> : "Bình luận"}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         ) : (
           <p>
             Cần phải

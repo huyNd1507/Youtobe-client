@@ -11,7 +11,7 @@ const Search = () => {
 
   const searchParams = useSearchParams();
   const searchTerm = searchParams.get("q");
-  console.log("searchTerm", searchTerm);
+  // console.log("searchTerm", searchTerm);
 
   useEffect(() => {
     (async () => {

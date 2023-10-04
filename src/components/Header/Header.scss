@@ -136,7 +136,7 @@ input:focus {
   color: #000;
   right: 22px;
   top: 50px;
-  min-width: 170px;
+  min-width: 220px;
 
   transition: 0.3s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -176,11 +176,11 @@ input:focus {
   button {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     font-size: 17px;
     font-weight: 500;
     width: 100%;
-    padding: 10px 20px;
+    padding: 10px 7px;
     color: #000;
     background: #fff;
   }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 import "./VideoDetails.scss";
 import {
@@ -11,7 +12,7 @@ import {
   setIsDisLike,
   setIsLike,
 } from "../../redux/slice/videoSlice";
-import { getCommentApi } from "../../api/commentApi";
+import { getCommentApi, updateCommentApi } from "../../api/commentApi";
 import { descViewApi } from "../../api/videoApi";
 import Notfound from "../../pages/Notfound/Notfound";
 import Title from "../../components/Shared/Title";
@@ -30,7 +31,7 @@ const VideoDetails = () => {
     (state) => state.video
   );
 
-  console.log("video: ", video);
+  // console.log("video: ", video);
   const { currentUser } = useSelector((state) => state.auth);
   const { t } = useTranslation();
 
@@ -47,6 +48,28 @@ const VideoDetails = () => {
   const deleteComment = (id) => {
     const newListComment = commentList.filter((p) => p._id !== id);
     setCommentList(newListComment);
+  };
+
+  const updateComment = async (commentId, updatedContent) => {
+    try {
+      const res = await updateCommentApi(commentId, {
+        content: updatedContent,
+      });
+      if (res.data.success) {
+        const updatedCommentList = commentList.map((comment) =>
+          comment._id === commentId
+            ? { ...comment, content: updatedContent }
+            : comment
+        );
+        setCommentList(updatedCommentList);
+        toast.success("Cập nhật nhận xét thành công!");
+      } else {
+        toast.error("Cập nhật nhận xét thất bại!");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Có lỗi xảy ra khi cập nhật nhận xét!");
+    }
   };
 
   useEffect(() => {
@@ -148,7 +171,11 @@ const VideoDetails = () => {
           </div>
         </div>
         <InputComment addComment={addComment} />
-        <CommentList deleteComment={deleteComment} commentList={commentList} />
+        <CommentList
+          deleteComment={deleteComment}
+          commentList={commentList}
+          updateComment={updateComment}
+        />
       </div>
       <div className="video-recomment">
         {videoRecomment.length > 1 ? (

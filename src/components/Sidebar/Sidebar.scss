@@ -1,11 +1,33 @@
 /* Sidebar */
 .side-bar {
   height: 100%;
+  position: absolute;
+  background: #fff;
+  top: 0;
   min-width: 220px;
   z-index: 10000;
   overflow: scroll;
+  transform: translateX(-100%);
+  transition: 0.3s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.15) 1.25px 1.25px 2.6px;
   padding-bottom: 30px;
+
+  &.actives {
+    transform: translateX(0);
+  }
+}
+
+.modal-sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 111;
+}
+.side-bar.actives {
+  transform: translateX(0);
 }
 
 .channel-sub-user span {
@@ -14,20 +36,9 @@
   text-overflow: ellipsis;
 }
 
-// .side-bar::-webkit-scrollbar {
-//   width: 6px;
-//   height: 4px;
-// }
-
 .side-bar::-webkit-scrollbar {
   width: 0px;
 }
-
-// .side-bar:hover::-webkit-scrollbar {
-//   width: 6px;
-//   height: 4px;
-//   background-color: #ccc;
-// }
 
 .nav {
   width: 100%;

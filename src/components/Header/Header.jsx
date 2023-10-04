@@ -11,7 +11,7 @@ import { logOut } from "../../redux/slice/authSlice";
 const Header = ({ setShow, show, theme, setTheme }) => {
   const { t, i18n } = useTranslation();
   const currentLanguage = locales[i18n.language];
-  console.log("currentLanguage: ", currentLanguage);
+  // console.log("currentLanguage: ", currentLanguage);
 
   const { currentUser } = useSelector((state) => state.auth);
   const [text, setText] = useState("");
@@ -135,7 +135,11 @@ const Header = ({ setShow, show, theme, setTheme }) => {
           </div>
         ) : (
           <div
-            onClick={() => setShowNavbar(!showNavbar)}
+            onClick={() => {
+              if (!showLanguageMenu) {
+                setShowNavbar(!showNavbar);
+              }
+            }}
             className="ellipsis-menu"
           >
             <i className="bx bx-dots-vertical-rounded"></i>
@@ -233,7 +237,7 @@ const Header = ({ setShow, show, theme, setTheme }) => {
             {showLanguageMenu && (
               <div className="submenu">
                 <button className="back-button" onClick={handleBackButtonClick}>
-                  <box-icon name="arrow-back"></box-icon> Ngôn ngữ
+                  <i className="bx bx-chevron-left box-icon"></i>Ngôn ngữ
                 </button>
                 <ul>
                   <li onClick={() => changeLanguage("en")}>Tiếng Anh</li>

@@ -157,7 +157,11 @@ textarea .upload-video form .content textarea,
 }
 
 [data-theme="dark"] .video-details .comment {
+<<<<<<< HEAD
   background: #111;
+=======
+  background: transparent;
+>>>>>>> master
 }
 
 [data-theme="dark"] .videos .video .details .title a,
@@ -217,6 +221,42 @@ textarea .upload-video form .content textarea,
   color: #000;
 }
 
+[data-theme="dark"] .box-language button {
+  background: #000;
+  color: #fff;
+}
+
+[data-theme="dark"] .comment-menu .box-menu:hover {
+  background-color: #444;
+}
+
+[data-theme="dark"] .comment-box {
+  background-color: #000;
+}
+
+[data-theme="dark"] .form-editcomment button .bxs-send {
+  color: #fff;
+}
+[data-theme="dark"] .form-editcomment button:hover {
+  background-color: #444;
+}
+[data-theme="dark"] .form-editcomment input {
+  background: transparent;
+  border-bottom: 1px solid #ccc;
+}
+
+[data-theme="dark"] .form-editcomment button {
+  color: #fff;
+}
+
+[data-theme="dark"] .form-editcomment .bx-smile {
+  color: #bbb !important;
+}
+
+[data-theme="dark"] .side-bar {
+  background-color: #222;
+}
+
 @media (max-width: 900px) {
   [data-theme="dark"] .side-bar {
     background-color: #222;
@@ -264,6 +304,14 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.flex-1 {
+  flex: 1;
 }
 
 .d-flex {
@@ -355,7 +403,8 @@ main {
 .content {
   width: 100%;
   height: 100%;
-  padding: 10px;
+  margin: 0 auto;
+  padding: 10px 0;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -370,6 +419,9 @@ main {
 }
 
 @media (max-width: 768px) {
+  .content {
+    width: 100%;
+  }
   .video-box {
     display: flex;
     flex-direction: column;
