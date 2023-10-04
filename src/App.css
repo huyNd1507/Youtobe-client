@@ -157,11 +157,7 @@ textarea .upload-video form .content textarea,
 }
 
 [data-theme="dark"] .video-details .comment {
-<<<<<<< HEAD
-  background: #111;
-=======
   background: transparent;
->>>>>>> master
 }
 
 [data-theme="dark"] .videos .video .details .title a,
