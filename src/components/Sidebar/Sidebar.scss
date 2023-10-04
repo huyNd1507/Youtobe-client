@@ -1,0 +1,158 @@
+/* Sidebar */
+.side-bar {
+  height: 100%;
+  position: absolute;
+  background: #fff;
+  top: 0;
+  min-width: 220px;
+  z-index: 10000;
+  overflow: scroll;
+  transform: translateX(-100%);
+  transition: 0.3s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.25px 1.25px 2.6px;
+  padding-bottom: 30px;
+
+  &.actives {
+    transform: translateX(0);
+  }
+}
+
+.modal-sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 111;
+}
+.side-bar.actives {
+  transform: translateX(0);
+}
+
+.channel-sub-user span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.side-bar::-webkit-scrollbar {
+  width: 0px;
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  text-decoration: none;
+  // border-radius: 12px;
+  font-weight: 500;
+}
+
+.channel-sub {
+  padding: 15px 20px;
+  h1 {
+    font-size: 15px;
+    margin: 10px 0;
+  }
+
+  &-user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    img {
+      width: 30px;
+      height: 30px;
+      margin-right: 5px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #ccc;
+    }
+    span {
+      font-size: 15px;
+      color: #000;
+    }
+  }
+}
+
+.nav-link span {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+}
+
+.active {
+  background: #c2c3c6;
+}
+
+hr {
+  height: 1px;
+  background-color: #e5e5e5;
+  border: none;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .side-bar {
+    position: fixed;
+    width: 30%;
+    top: 0;
+    transform: translateX(-100%);
+    transition: 0.3s ease-in-out;
+    background: #fff;
+  }
+
+  .modal-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 111;
+  }
+  .side-bar.actives {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 320px) and (max-width: 650px) {
+  .side-bar {
+    position: fixed;
+    width: 30%;
+    top: 0;
+    transform: translateX(-100%);
+    transition: 0.3s ease-in-out;
+    background: #fff;
+  }
+
+  .modal-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 111;
+  }
+
+  .side-bar.actives {
+    transform: translateX(0);
+  }
+}
+
+.fa-toggle-on {
+  display: block;
+  z-index: 100;
+  color: black;
+}

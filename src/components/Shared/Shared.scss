@@ -1,0 +1,35 @@
+.want-login {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  .box {
+    padding: 40px 15px;
+    height: 150px;
+    background-color: #e5e7eb;
+    border-radius: 5px;
+    animation: showModal linear 0.2s;
+
+    p {
+      font-size: 20px;
+      padding: 12px 20px;
+      font-weight: 500;
+      line-height: 17px;
+    }
+
+    button {
+      background-color: #ff3333;
+      color: #fff;
+      font-size: 15px;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+  }
+}
+
+.no-result {
+  height: 100vh;
+}
