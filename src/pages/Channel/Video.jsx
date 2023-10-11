@@ -1,61 +1,73 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { CircularProgress } from "react-cssfx-loading";
 
 import { clearVideo, getChannelVideo } from "../../redux/slice/channelSlice";
 import VideoItem from "../../components/Video/VideoItem";
-import Loading from "../../components/Loading/Loading";
+
 const Video = () => {
   const [page, setPage] = useState(1);
   const [loadMore, setLoadMore] = useState(false);
+  const [sortType, setSortType] = useState("newest");
   const { videos, totalPage } = useSelector((state) => state.channel);
   const { currentUser } = useSelector((state) => state.auth);
-
-  const [totalView, setTotalView] = useState(null);
 
   const dispatch = useDispatch();
   const { id } = useParams();
 
   useEffect(() => {
     (async () => {
-      await dispatch(getChannelVideo({ id, page, isPublic: true }));
+      await dispatch(getChannelVideo({ id, page, isPublic: true, sortType }));
     })();
 
     return () => {
       setPage(1);
       dispatch(clearVideo());
     };
-  }, [id]);
+  }, [id, page, sortType]);
 
-  useEffect(() => {
-    (async () => {
-      if (page === 1) return;
-      setLoadMore(true);
-      await dispatch(getChannelVideo({ id, page, isPublic: true }));
-      setLoadMore(false);
-    })();
-  }, [id, page]);
-
-  useEffect(() => {
-    if (videos && videos.length > 0) {
-      const newTotalView = videos.reduce((total, video) => {
-        return total + video.totalView;
-      }, 0);
-      setTotalView(newTotalView);
-    } else {
-      setTotalView(null);
+  const handleSortClick = (type) => {
+    if (type === sortType) {
+      return;
     }
-  }, [videos, currentUser]);
+    setSortType(type);
+    setPage(1);
+  };
 
-  if (totalView === null) {
-    return <Loading />;
-  }
+  const sortedVideos = [...videos].sort((a, b) => {
+    if (sortType === "oldest") {
+      return new Date(a.createdAt) - new Date(b.createdAt);
+    } else if (sortType === "popularity") {
+      return b.totalView - a.totalView;
+    }
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
 
   return (
     <>
+      <div className="button-filter">
+        <button
+          className={sortType === "newest" ? "active" : ""}
+          onClick={() => handleSortClick("newest")}
+        >
+          Video mới nhất
+        </button>
+        <button
+          className={sortType === "oldest" ? "active" : ""}
+          onClick={() => handleSortClick("oldest")}
+        >
+          Video cũ nhất
+        </button>
+        <button
+          className={sortType === "popularity" ? "active" : ""}
+          onClick={() => handleSortClick("popularity")}
+        >
+          Video phổ biến nhất
+        </button>
+      </div>
       <div className="videos">
-        {videos.map(
+        {sortedVideos.map(
           (item) =>
             (item.isPublic ||
               (currentUser && currentUser._id === item.writer._id)) && (
