@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-
-import { calculateCreatedTime } from "../../utils/formatDate";
-import { useSelector } from "react-redux";
-import { deleteCommentApi } from "../../api/commentApi";
 import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Spin } from "react-cssfx-loading";
+import { useSelector } from "react-redux";
+
+// components
+import { calculateCreatedTime } from "../../utils/formatDate";
+import { deleteCommentApi } from "../../api/commentApi";
 
 const CommentList = ({ deleteComment, commentList, updateComment }) => {
   const { t } = useTranslation();
@@ -70,7 +71,9 @@ const CommentList = ({ deleteComment, commentList, updateComment }) => {
 
   return (
     <div className="comment-list">
-      <h3>{t("homepage.comment")}</h3>
+      <h3>
+        {t("homepage.comment")} - <small>{commentList.length}</small>
+      </h3>
 
       {commentList.length > 0 ? (
         commentList?.map((data) => (

@@ -9,15 +9,19 @@ import Loading from "../Loading/Loading";
 
 const ModalUpdateUser = ({ setShow }) => {
   const { profile } = useSelector((state) => state.channel);
-  const [previewAvatar, setPreviewAvatar] = useState(profile?.avatar);
 
+  const [previewAvatar, setPreviewAvatar] = useState(profile?.avatar);
+  const [previewBackground, setPreviewBackground] = useState(
+    profile?.background
+  );
   const [data, setData] = useState({
     name: profile.name,
     description: profile.description,
   });
   const [avatar, setAvatar] = useState();
-
+  const [bg, setBg] = useState();
   const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -33,16 +37,32 @@ const ModalUpdateUser = ({ setShow }) => {
     setAvatar(file);
   };
 
+  const handleChangeBg = (e) => {
+    const file = e.target.files[0];
+    if (file.size / 1000000 > 5)
+      return toast.error("File ảnh ko được vượt quá 5 MB!");
+    const preview = URL.createObjectURL(file);
+    setPreviewBackground(preview);
+    setBg(file);
+  };
+
   useEffect(() => {
     return () => {
       previewAvatar && URL.revokeObjectURL(previewAvatar);
     };
   }, [previewAvatar]);
 
+  useEffect(() => {
+    return () => {
+      previewBackground && URL.revokeObjectURL(previewBackground);
+    };
+  }, [previewBackground]);
+
   const handleUpdated = async (e) => {
     e.preventDefault();
     if (
       previewAvatar === profile.avatar &&
+      previewBackground === profile.background &&
       data.name === profile.name &&
       data.description === profile.description
     )
@@ -62,11 +82,11 @@ const ModalUpdateUser = ({ setShow }) => {
 
     setLoading(true);
 
-    if (!avatar) {
+    if (!avatar && !bg) {
       dispatch(updatedUser(data));
     }
 
-    if (avatar) {
+    if (avatar && !bg) {
       const url = await uploadImg(avatar);
       dispatch(
         updatedUser({
@@ -76,12 +96,23 @@ const ModalUpdateUser = ({ setShow }) => {
       );
     }
 
-    if (avatar) {
-      const files = [avatar];
+    if (bg && !avatar) {
+      const url = await uploadImg(bg);
+      dispatch(
+        updatedUser({
+          ...data,
+          background: url,
+        })
+      );
+    }
+
+    if (avatar && bg) {
+      const files = [bg, avatar];
       const url = await Promise.all(files.map(async (p) => await uploadImg(p)));
       dispatch(
         updatedUser({
           ...data,
+          background: url[0],
           avatar: url[1],
         })
       );
@@ -97,6 +128,15 @@ const ModalUpdateUser = ({ setShow }) => {
         <div className="modal-box">
           <i setShow={setShow} class="bx bx-x box-icon close-icon "></i>
           <form onSubmit={handleUpdated} onClick={(e) => e.stopPropagation()}>
+            <div className="img-bg">
+              <img alt="" src={previewBackground} />
+              <input
+                type="file"
+                id="file-avatar"
+                accept="image/*"
+                onChange={handleChangeBg}
+              />
+            </div>
             <div>
               <img alt="" src={previewAvatar} />
               <input

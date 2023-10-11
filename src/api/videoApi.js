@@ -1,7 +1,11 @@
 import axiosClient from "./axiosClient";
 
+// export const getAllVideosApi = (page) => {
+//   return axiosClient.get(`/api/video?page=${page}`);
+// };
+// Lấy danh sách video công khai
 export const getAllVideosApi = (page) => {
-  return axiosClient.get(`/api/video?page=${page}`);
+  return axiosClient.get(`/api/video?page=${page}&public=true`);
 };
 
 export const uploadVideoApi = (data) => {

@@ -34,11 +34,8 @@ const VideoInfoWriter = ({ likeCount, disLikeCount, video }) => {
 
   const [showModal, setShowModal] = useState(false);
   const [shareBox, setShareBox] = useState(false);
-  const dispatch = useDispatch();
-  const location = useLocation();
-  const currentURL = location.pathname;
-  // console.log("currentURL: ", currentURL);
 
+  const dispatch = useDispatch();
   const { id } = useParams();
 
   const handleLike = () => {
@@ -91,6 +88,26 @@ const VideoInfoWriter = ({ likeCount, disLikeCount, video }) => {
     dispatch(addVideoFavourite(video));
     toast.success("Video đã được thêm vào danh sách!");
   };
+
+  // const downloadVideo = (videoUrl) => {
+  //   fetch(videoUrl, {
+  //     method: "GET",
+  //     responseType: "blob",
+  //   })
+  //     .then((response) => response.blob())
+  //     .then((blob) => {
+  //       const url = window.URL.createObjectURL(new Blob([blob]));
+  //       const link = document.createElement("a");
+  //       link.href = url;
+  //       link.setAttribute("download", "video.mp4");
+
+  //       document.body.appendChild(link);
+  //       link.click();
+
+  //       window.URL.revokeObjectURL(url);
+
+  //     });
+  // };
 
   if (error) return <Notfound />;
   return (
@@ -166,6 +183,14 @@ const VideoInfoWriter = ({ likeCount, disLikeCount, video }) => {
             </>
           )}
         </div>
+
+        {/* <div className="video-like">
+          {video?.videoUrl && (
+            <button onClick={() => downloadVideo(video.videoUrl)}>
+              <box-icon type="solid" name="download"></box-icon>
+            </button>
+          )}
+        </div> */}
       </div>
       {showModal && <ModalAuth setShow={setShowModal} />}
     </>

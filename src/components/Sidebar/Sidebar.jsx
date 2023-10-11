@@ -81,7 +81,7 @@ const Sidebar = ({ show, setShow }) => {
                   <h1>{t("homepage.subscribed channel")}</h1>
                   {subChannel.map((data) => (
                     <Link
-                      to={`/channel/${data?.channelId?._id}`}
+                      to={`/channel/${data?.channelId?._id}/videos`}
                       key={data._id}
                     >
                       <div className="channel-sub-user">

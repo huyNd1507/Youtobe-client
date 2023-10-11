@@ -17,8 +17,11 @@ const Uploadvideo = () => {
   const [data, setData] = useState({
     title: "",
     description: "",
+    tags: "",
+    isPublic: true,
   });
   const { currentUser } = useSelector((state) => state.auth);
+  const [percent, setPercent] = useState(0);
 
   const navigate = useNavigate();
 
@@ -47,10 +50,12 @@ const Uploadvideo = () => {
   const handleSubmitForm = async (e) => {
     e.preventDefault();
 
-    if (!data.title.trim() || !data.description.trim())
+    if (!data.title.trim() || !data.description.trim() || !data.tags.trim()) {
       return toast.error("Không được để trống các trường!");
-    if (data.title.trim().length > 100)
+    }
+    if (data.title.trim().length > 100) {
       return toast.error("Tiêu đề video không được dài quá 100 kí tự!");
+    }
     if (!file) return toast.error("Bạn chưa chọn video nào!");
 
     URL.revokeObjectURL(previewVideo);
@@ -60,14 +65,23 @@ const Uploadvideo = () => {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("upload_preset", process.env.REACT_APP_UPLOAD_KEY);
+      formData.append("tags", data.tags);
+      formData.append("isPublic", data.isPublic);
 
-      const toastId = toast.loading("Upload...", { position: "bottom-right" });
+      // Hiển thị Toast và lưu toastId vào state
+      const toastId = toast.loading("Đang tải lên video 1%", {
+        position: "bottom-right",
+      });
+      setPercent(1); // Bắt đầu từ 1%
 
       const res = await axios.post(cloudinaryUrl, formData, {
         onUploadProgress: (p) => {
           const { loaded, total } = p;
-          let percent = Math.floor((loaded * 100) / total);
-          toast.loading(`Upload video ${percent}`, { toastId: toastId });
+          const newPercent = Math.floor((loaded * 100) / total);
+          setPercent(newPercent);
+          toast.update(toastId, {
+            render: `Đang tải lên video ${newPercent}%`,
+          });
         },
       });
 
@@ -78,19 +92,19 @@ const Uploadvideo = () => {
 
       const uploadVideo = await uploadVideoApi(newVideo);
 
-      toast.dismiss(toastId);
-
       if (uploadVideo.data.success) {
         navigate(`/details/${uploadVideo.data.video?._id}`);
         toast.success(uploadVideo.data.message);
+      } else {
+        toast.error(uploadVideo.data.message);
       }
     } catch (error) {
-      console.log(error);
-      toast.error("upload video fail!");
+      console.error(error);
+      toast.error("Tải video lên thất bại!");
     } finally {
+      setLoading(false);
       toast.dismiss();
     }
-    setLoading(false);
   };
 
   return (
@@ -99,11 +113,11 @@ const Uploadvideo = () => {
       {currentUser ? (
         <form onSubmit={handleSubmitForm}>
           <div className="file-video">
-            <div className="file-info">
+            <div className="file-info flex-1">
               <i className="bx bxs-cloud-upload box-icon"></i>
               <span>Chọn video để tải lên</span>
               <span>Mp4, x-m4v</span>
-              <span>Nhở hơn 30 MB</span>
+              <span>Nhỏ hơn 30 MB</span>
               <input
                 type="file"
                 id="file-upload"
@@ -111,11 +125,13 @@ const Uploadvideo = () => {
                 accept="video/mp4,video/x-m4v,video/*"
               />
             </div>
-            {previewVideo && <video src={previewVideo} controls />}
+            <div className="flex-1">
+              {previewVideo && <video src={previewVideo} controls />}
+            </div>
           </div>
           <div className="content">
             <div>
-              <label>Tiêu để</label>
+              <label>Tiêu đề</label>
               <input
                 type="text"
                 placeholder="Tiêu đề..."
@@ -134,6 +150,28 @@ const Uploadvideo = () => {
                 value={data.description}
                 onChange={handleChangeInput}
               />
+            </div>
+            <div>
+              <label>Thẻ (tags)</label>
+              <input
+                type="text"
+                placeholder="Nhập các từ khóa cách nhau bằng dấu phẩy"
+                name="tags"
+                onChange={handleChangeInput}
+                value={data.tags}
+              />
+            </div>
+            <div>
+              <label>Trạng thái</label>
+              <select
+                className="select"
+                name="isPublic"
+                onChange={handleChangeInput}
+                value={data.isPublic}
+              >
+                <option value={true}>Công khai</option>
+                <option value={false}>Riêng tư</option>
+              </select>
             </div>
             <button disabled={loading}>Đăng</button>
           </div>

@@ -9,6 +9,8 @@ const HistoryVideo = () => {
   const videos = useMemo(getVideoLocal, []);
   if (videos.length === 0) return <NoResults />;
 
+  console.log("video from HistoryVideo: ", videos);
+
   return (
     <div>
       <Title title={"Video đã xem | Youtube"} />

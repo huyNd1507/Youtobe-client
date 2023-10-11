@@ -11,6 +11,9 @@ import { useTranslation } from "react-i18next";
 const VideoItem = ({ data, edit }) => {
   const { t } = useTranslation();
   const [show, setShow] = useState(false);
+
+  console.log("data: ", data);
+
   const dispatch = useDispatch();
 
   const handleDeleteVideo = () => {
@@ -34,6 +37,7 @@ const VideoItem = ({ data, edit }) => {
                 alt=""
               />
             </Link>
+
             {edit && (
               <div className="video-action">
                 <i
@@ -50,7 +54,7 @@ const VideoItem = ({ data, edit }) => {
 
           <div className="details">
             <div className="author">
-              <Link to={`/channel/${data?.writer?._id}`}>
+              <Link to={`/channel/${data?.writer?._id}/videos`}>
                 <img src={data?.writer?.avatar} alt={data?.writer?.name} />
               </Link>
             </div>

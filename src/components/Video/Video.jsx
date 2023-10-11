@@ -11,8 +11,9 @@ import NoResults from "../Shared/NoResults";
 
 const Video = ({ page, setPage, GetData }) => {
   const { data, totalPage, error } = useSelector((state) => state.infinity);
-  // console.log("data: ", data);
+
   const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
 
   useEffect(() => {

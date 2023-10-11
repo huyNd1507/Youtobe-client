@@ -1,4 +1,5 @@
 .channel-container {
+  padding-bottom: 50px;
   .text-center {
     button {
       color: #fff;
@@ -22,6 +23,7 @@
 
       span {
         margin-left: 10px;
+        margin-right: 10px;
         display: block;
       }
     }
@@ -59,8 +61,23 @@
   .text-center {
     button {
       background: transparent;
+      color: #000;
     }
   }
+}
+
+.channel-background {
+  width: 100%;
+  height: 300px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.font-semibold {
+  margin-top: 15px;
 }
 
 @media (max-width: 768px) {

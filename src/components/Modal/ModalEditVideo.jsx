@@ -15,6 +15,7 @@ const ModalEditVideo = ({ setShow, video }) => {
       : data?.videoUrl?.replace(".mp4", ".jpg")
   );
   const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleOnchange = (e) => {
@@ -27,18 +28,20 @@ const ModalEditVideo = ({ setShow, video }) => {
     if (
       data.title === video.title &&
       data.description === video.description &&
+      data.tags === video.tags &&
+      data.isPublic === video.isPublic &&
       !files
     ) {
       return setShow(false);
     }
 
     if (!data.title.trim() || !data.description.trim()) {
-      return toast.error("Không đc để trống các trường!");
+      return toast.error("Không được để trống các trường!");
     }
 
     if (data.title.trim().length > 100) {
       return toast.error(
-        "Tiêu đề video ko đc vướt quá 76 kí tự và mô tả ko đc vượt quá 100 kí tự!"
+        "Tiêu đề video không được vượt quá 100 kí tự và mô tả không được vượt quá 100 kí tự!"
       );
     }
 
@@ -88,7 +91,7 @@ const ModalEditVideo = ({ setShow, video }) => {
     <>
       <Overlay setShow={setShow}>
         <div className="modal-box modal-video">
-          <i setShow={setShow} class="bx bx-x box-icon "></i>
+          <i setShow={setShow} className="bx bx-x box-icon "></i>
           <form onSubmit={handleEditVideo} onClick={(e) => e.stopPropagation()}>
             <div>
               <img alt="" src={previewThumnail} style={{ width: "100%" }} />
@@ -96,7 +99,7 @@ const ModalEditVideo = ({ setShow, video }) => {
             </div>
             <div className="content">
               <div>
-                <label>Tiêu để</label>
+                <label>Tiêu đề</label>
                 <input
                   type="text"
                   placeholder="Tiêu đề..."
@@ -115,6 +118,27 @@ const ModalEditVideo = ({ setShow, video }) => {
                   name="description"
                   onChange={handleOnchange}
                 />
+              </div>
+              <div>
+                <label>Thẻ (tags)</label>
+                <input
+                  type="text"
+                  placeholder="Nhập các từ khóa cách nhau bằng dấu phẩy"
+                  value={data?.tags}
+                  name="tags"
+                  onChange={handleOnchange}
+                />
+              </div>
+              <div>
+                <label>Trạng thái</label>
+                <select
+                  value={data?.isPublic}
+                  name="isPublic"
+                  onChange={handleOnchange}
+                >
+                  <option value={true}>Công khai</option>
+                  <option value={false}>Riêng tư</option>
+                </select>
               </div>
               <button disabled={loading}>Đăng</button>
             </div>

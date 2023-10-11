@@ -9,11 +9,11 @@ import { locales } from "../../i18n";
 import { logOut } from "../../redux/slice/authSlice";
 
 const Header = ({ setShow, show, theme, setTheme }) => {
+  const { currentUser } = useSelector((state) => state.auth);
+
   const { t, i18n } = useTranslation();
   const currentLanguage = locales[i18n.language];
-  // console.log("currentLanguage: ", currentLanguage);
 
-  const { currentUser } = useSelector((state) => state.auth);
   const [text, setText] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
@@ -115,12 +115,12 @@ const Header = ({ setShow, show, theme, setTheme }) => {
           <i className="bx bx-search"></i>
         </div>
 
-        {currentUser && (
+        {/* {currentUser && (
           <div className="notification">
             <i className="bx bx-bell"></i>
             <div className="notification-popup"></div>
           </div>
-        )}
+        )} */}
 
         {currentUser ? (
           <div
@@ -152,7 +152,7 @@ const Header = ({ setShow, show, theme, setTheme }) => {
               <div className="User-avatar user-popup">
                 <Link
                   onClick={() => setShowNavbar(!showNavbar)}
-                  to={`/channel/${currentUser._id}`}
+                  to={`/channel/${currentUser._id}/videos`}
                   style={{ display: "flex" }}
                 >
                   <img src={currentUser.avatar} alt={currentUser.name} />
@@ -173,7 +173,7 @@ const Header = ({ setShow, show, theme, setTheme }) => {
                   <i className="bx bx-user-circle icon"></i>
                   <Link
                     onClick={() => setShowNavbar(!showNavbar)}
-                    to={`/channel/${currentUser._id}`}
+                    to={`/channel/${currentUser._id}/videos`}
                   >
                     Kênh của bạn
                   </Link>

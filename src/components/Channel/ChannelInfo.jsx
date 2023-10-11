@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Routes, useParams, Route, useLocation, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 import Navigation from "./Navigation";
 import ModalUpdateUser from "../Modal/ModalUpdateUser";
 import {
@@ -12,11 +13,12 @@ import {
 } from "../../redux/slice/subsrciptionSlice";
 import ModalAuth from "../Modal/ModalAuth";
 
-const ChannelInfo = ({ profile }) => {
+const ChannelInfo = ({ profile, videos }) => {
   const [show, setShow] = useState(false);
   const [showModalAuth, setShowModalAuth] = useState(false);
   const { currentUser } = useSelector((state) => state.auth);
   const { isSubsrciption, subsrciptCount } = useSelector((state) => state.sub);
+
   const dispatch = useDispatch();
 
   const { id } = useParams();
@@ -49,12 +51,19 @@ const ChannelInfo = ({ profile }) => {
 
   return (
     <>
+      <div className="channel-background">
+        <img src={profile?.background} alt="" />
+      </div>
       <div className="channel-info">
         <div className="channel-info-user">
           <img src={profile?.avatar} alt={"avatar"} />
           <div>
             <span>{profile?.name}</span>
-            <span> {subsrciptCount} người đăng ký</span>
+            <div className="d-flex">
+              <span> {subsrciptCount} người đăng ký</span>
+              <span>-</span>
+              <span> {videos.length} video</span>
+            </div>
           </div>
         </div>
         <div>

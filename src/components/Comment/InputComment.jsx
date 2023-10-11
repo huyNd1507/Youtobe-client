@@ -4,17 +4,24 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
 import { Spin } from "react-cssfx-loading";
-
-import { postCommentApi } from "../../api/commentApi";
 import { useTranslation } from "react-i18next";
+
+// component
+import { postCommentApi } from "../../api/commentApi";
+
+// const socket = io("http://localhost:5000");
 
 const InputComment = ({ addComment }) => {
   const { t } = useTranslation();
   const { currentUser } = useSelector((state) => state.auth);
+
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
+
+  const location = useLocation();
+  const { id } = useParams();
 
   const handleInputFocus = () => {
     setIsInputFocused(true);
@@ -31,9 +38,6 @@ const InputComment = ({ addComment }) => {
     );
   };
 
-  const location = useLocation();
-  const { id } = useParams();
-
   const handlePostComment = async (e, newComment) => {
     e.preventDefault();
     if (!text.trim()) return;
@@ -43,6 +47,7 @@ const InputComment = ({ addComment }) => {
       if (res.data.success) {
         addComment(res.data.comment);
       }
+
       setText("");
     } catch (error) {
       console.log(error);

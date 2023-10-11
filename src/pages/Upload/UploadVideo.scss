@@ -1,4 +1,6 @@
 .upload-video {
+  width: 50%;
+  margin: 0 auto;
   form {
     .file-video {
       display: flex;
@@ -12,9 +14,14 @@
         align-items: center;
         border: 1px dashed #000;
         width: 100%;
+        // background-color: #ccc;
 
         i {
           font-size: 35px;
+        }
+
+        input {
+          cursor: pointer;
         }
 
         span {
@@ -32,7 +39,8 @@
 
       video {
         width: 100%;
-        height: 250px;
+        height: 100%;
+        background-color: #000;
       }
     }
 
@@ -45,7 +53,8 @@
 
       input,
       textarea,
-      button {
+      button,
+      select {
         width: 100%;
         padding: 10px;
         outline: none;
@@ -54,8 +63,12 @@
         background-color: #fff;
       }
 
+      option {
+        padding: 10px;
+      }
+
       button {
-        margin: 10px 0;
+        margin: 20px 0 10px 0;
         background-color: #ff3333;
         color: #fff;
         font-size: 15px;
@@ -65,10 +78,14 @@
 }
 
 @media (max-width: 900px) {
+  .upload-video {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
   .upload-video {
+    width: 100%;
     .file-video {
       display: flex;
       flex-direction: column-reverse;

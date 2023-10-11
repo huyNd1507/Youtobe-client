@@ -13,7 +13,6 @@ import {
   setIsLike,
 } from "../../redux/slice/videoSlice";
 import { getCommentApi, updateCommentApi } from "../../api/commentApi";
-import { descViewApi } from "../../api/videoApi";
 import Notfound from "../../pages/Notfound/Notfound";
 import Title from "../../components/Shared/Title";
 import VideoInfoWriter from "../../components/Video/VideoInfoWriter";
@@ -22,7 +21,6 @@ import VideoInfo from "../../components/Video/VideoInfo";
 import InputComment from "../../components/Comment/InputComment";
 import CommentList from "../../components/Comment/CommentList";
 import VideoRecommentItem from "../../components/Video/VideoRecommentItem";
-import { addVideoLocal } from "../../utils/localStrorage";
 import { calculateCreatedTime } from "../../utils/formatDate";
 import { useTranslation } from "react-i18next";
 
@@ -31,7 +29,9 @@ const VideoDetails = () => {
     (state) => state.video
   );
 
-  // console.log("video: ", video);
+  console.log("likecount: ", likeCount);
+  console.log("disLikeCount: ", disLikeCount);
+
   const { currentUser } = useSelector((state) => state.auth);
   const { t } = useTranslation();
 
@@ -109,19 +109,6 @@ const VideoDetails = () => {
     dispatch(checkDisLikeVideo(id));
   }, [id, currentUser, dispatch]);
 
-  useEffect(() => {
-    if (video._id) {
-      addVideoLocal({
-        ...video,
-        viewAt: Date.now(),
-      });
-    }
-  }, [video]);
-
-  useEffect(() => {
-    descViewApi(id);
-  }, [id]);
-
   if (error) return <Notfound />;
 
   return (
@@ -129,7 +116,11 @@ const VideoDetails = () => {
       <Title title={`${video?.title} | Youtube`} />
       <div className="video-details-left">
         {video?.videoUrl && (
-          <VideoPlayer videoId={video?._id} url={video?.videoUrl} />
+          <VideoPlayer
+            videoId={video?._id}
+            url={video?.videoUrl}
+            video={video}
+          />
         )}
         <div className="video-info">
           <h1>

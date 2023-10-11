@@ -12,7 +12,9 @@ import ChannelInfo from "../../components/Channel/ChannelInfo";
 import Title from "../../components/Shared/Title";
 
 const Channel = () => {
-  const { profile, loading, error } = useSelector((state) => state.channel);
+  const { videos, profile, loading, error } = useSelector(
+    (state) => state.channel
+  );
 
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -27,10 +29,18 @@ const Channel = () => {
     <>
       <Title title={`${profile?.name} | Youtube`} />
       <div className="channel-container">
-        <ChannelInfo profile={profile} />
+        <ChannelInfo profile={profile} videos={videos} />
 
         <Routes>
-          <Route path="" element={<Home name={profile?.description} />} />
+          <Route
+            path=""
+            element={
+              <Home
+                name={profile?.description}
+                createdAt={profile?.createdAt}
+              />
+            }
+          />
           <Route path="videos" element={<Video />} />
           <Route
             path="descriptions"
