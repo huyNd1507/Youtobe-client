@@ -260,7 +260,7 @@
 
 .video-recomment {
   margin-bottom: 50px;
-  padding-right: 35px;
+  padding-right: 20px !important;
 }
 
 .video-recomment-item {
@@ -312,6 +312,10 @@
   .video-details {
     grid-template-columns: 1fr;
   }
+
+  .video-recomment {
+    margin-right: 0px !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -332,7 +336,9 @@
     width: 100%;
     height: 230px;
   }
-
+  .video-recomment {
+    margin-right: 0px !important;
+  }
   .video-recomment-item .video-avatar img {
     width: 100%;
     height: 110px;

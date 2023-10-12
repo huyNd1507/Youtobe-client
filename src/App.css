@@ -405,6 +405,40 @@ main {
   overflow-x: hidden;
 }
 
+.search-button {
+  padding: 10px 15px;
+  background-color: #eee;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.bg-red {
+  background: #ff3333;
+  color: #fff;
+}
+
+.channel-info-result {
+  display: flex;
+  align-items: center;
+}
+
+.channel-info-result img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.channel-info-result span {
+  padding: 3px 0px;
+  display: block;
+}
+
+.channel-info-result span:first-child {
+  font-weight: bold;
+  font-size: 20px;
+}
+
 @keyframes showModal {
   from {
     opacity: 0;
@@ -415,6 +449,9 @@ main {
 }
 
 @media (max-width: 768px) {
+  main {
+    height: 100%;
+  }
   .content {
     width: 100%;
   }
@@ -435,9 +472,12 @@ main {
 }
 
 @media (max-width: 480px) {
+  main {
+    height: 100%;
+  }
   .content {
     max-width: 100%;
-    padding: 5px 5px;
+    padding: 5px 5px 0px 5px;
     margin-bottom: 30px;
   }
 

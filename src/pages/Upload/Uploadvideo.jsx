@@ -18,7 +18,7 @@ const Uploadvideo = () => {
     title: "",
     description: "",
     tags: "",
-    isPublic: true,
+    isPublic: false,
   });
   const { currentUser } = useSelector((state) => state.auth);
   const [percent, setPercent] = useState(0);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../image/instagram-stories.png";
@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import "./Header.scss";
 import { locales } from "../../i18n";
 import { logOut } from "../../redux/slice/authSlice";
+import { useSearchParams } from "../../hooks/useSearchParms";
 
 const Header = ({ setShow, show, theme, setTheme }) => {
   const { currentUser } = useSelector((state) => state.auth);
@@ -18,6 +19,11 @@ const Header = ({ setShow, show, theme, setTheme }) => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
+
+  const searchParams = useSearchParams();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLanguageClick = () => {
     setShowLanguageMenu(!showLanguageMenu);
@@ -38,23 +44,14 @@ const Header = ({ setShow, show, theme, setTheme }) => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
   };
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setShow(!show);
   };
 
-  const handleSearchChange = (e) => {
-    setText(e.target.value);
-  };
-
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    if (!text.trim()) return;
-    navigate(`/search?type=video&q=${text}`);
-    setSearchOpen(false);
-    setText("");
+  const onChangeForm = (e) => {
+    const value = e.target.value;
+    setText(value);
   };
 
   return (
@@ -66,12 +63,21 @@ const Header = ({ setShow, show, theme, setTheme }) => {
         </Link>
       </div>
       <div className="search center search-destop">
-        <form onSubmit={handelSubmit}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (!text.trim()) return;
+            navigate(
+              `/search?type=${searchParams.get("type") || "video"}&q=${text}`
+            );
+          }}
+          onClick={(e) => e.stopPropagation()}
+        >
           <input
             value={text}
             type="text"
             placeholder={t("homepage.search")}
-            onChange={handleSearchChange}
+            onChange={(e) => onChangeForm(e)}
           />
           <button>
             <i className="bx bx-search box-icon"></i>
@@ -86,12 +92,24 @@ const Header = ({ setShow, show, theme, setTheme }) => {
             onClick={() => setSearchOpen(!searchOpen)}
           ></div>
           <div className="search center">
-            <form onSubmit={handelSubmit}>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (!text.trim()) return;
+                navigate(
+                  `/search?type=${
+                    searchParams.get("type") || "video"
+                  }&q=${text}`
+                );
+                setSearchOpen(false);
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
               <input
                 value={text}
                 type="text"
                 placeholder={t("homepage.search")}
-                onChange={handleSearchChange}
+                onChange={(e) => onChangeForm(e)}
               />
               <button>
                 <i className="bx bx-search box-icon"></i>
