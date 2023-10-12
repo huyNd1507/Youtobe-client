@@ -45,7 +45,7 @@ const Search = () => {
   if (loading) return <Loading />;
 
   return (
-    <>
+    <div className="search-result">
       <div style={{ marginTop: "20px", marginBottom: "50px" }}>
         <Link
           to={`/search?type=video&q=${searchTerm}`}
@@ -86,7 +86,7 @@ const Search = () => {
       ) : (
         <NoResults />
       )}
-    </>
+    </div>
   );
 };
 

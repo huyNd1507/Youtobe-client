@@ -252,6 +252,14 @@ textarea .upload-video form .content textarea,
 [data-theme="dark"] .side-bar {
   background-color: #222;
 }
+[data-theme="dark"] .search-button {
+  color: #fff;
+  background-color: #000;
+}
+[data-theme="dark"] .search-button.bg-red {
+  color: #fff;
+  background-color: red;
+}
 
 @media (max-width: 900px) {
   [data-theme="dark"] .side-bar {
@@ -450,7 +458,7 @@ main {
 
 @media (max-width: 768px) {
   main {
-    height: 100%;
+    height: 100vh;
   }
   .content {
     width: 100%;
@@ -469,11 +477,15 @@ main {
   .video-details {
     grid-template-columns: 1fr;
   }
+
+  .search-result {
+    height: 100%;
+  }
 }
 
 @media (max-width: 480px) {
   main {
-    height: 100%;
+    height: 100vh;
   }
   .content {
     max-width: 100%;
@@ -492,5 +504,9 @@ main {
 
   .video-details {
     grid-template-columns: 1fr;
+  }
+
+  .search-result {
+    height: 100%;
   }
 }
